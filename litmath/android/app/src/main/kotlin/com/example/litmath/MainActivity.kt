@@ -1,0 +1,6 @@
+package com.example.litmath
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
