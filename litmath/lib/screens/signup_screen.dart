@@ -206,29 +206,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
         foregroundColor: Colors.black,
         shadowColor: Colors.transparent,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(40),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Crear una cuenta',
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'OpenSans',
-                fontSize: 30.0,
-                fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.all(40),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'Crear una cuenta',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'OpenSans',
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            const SizedBox(height: 30.0),
-            _NombreTextField(),
-            const SizedBox(height: 30.0),
-            _EmailTextField(),
-            const SizedBox(height: 30.0),
-            _PasswordTextField(),
-            _RegisterButton(
-                context, emailController.text, passwordController.text),
-          ],
+              const SizedBox(height: 30.0),
+              _NombreTextField(),
+              const SizedBox(height: 30.0),
+              _EmailTextField(),
+              const SizedBox(height: 30.0),
+              _PasswordTextField(),
+              _RegisterButton(
+                  context, emailController.text, passwordController.text),
+            ],
+          ),
         ),
       ),
     );
