@@ -11,8 +11,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
-    final emailController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
   Widget _EmailTextField() {
     return Column(
@@ -139,9 +138,8 @@ class _LoginScreenState extends State<LoginScreen> {
             'LOGIN',
             style: TextStyle(letterSpacing: 1.5),
           ),
-          onPressed: () => {_submit(context, emailController.text,
-                      passwordController.text)}
-              ,
+          onPressed: () =>
+              {_submit(context, emailController.text, passwordController.text)},
         ));
   }
 
