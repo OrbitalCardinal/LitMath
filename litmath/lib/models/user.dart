@@ -3,10 +3,14 @@ class User {
   String email = '';
   String password = '';
 
-  User(String name, String email, String password) {
-    this.name = name;
-    this.email = email;
-    this.password = password;
+  User({required this.name, required this.email, required this.password});
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      name: json['name'], 
+      email: json['email'],
+      password: json['title'],
+      );
   }
   
 }
