@@ -27,9 +27,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Future<void> _submit(
-      BuildContext context, String email, String password) async {
+      BuildContext context, String email, String password, String name) async {
     try {
-      UserProvider().signup(email, password);
+      UserProvider().signup(email, password, name);
     } catch (error) {
       showDialog(
           context: context,
@@ -184,8 +184,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               style: TextStyle(letterSpacing: 1.5),
             ),
             onPressed: () => {
-                  _submit(
-                      context, emailController.text, passwordController.text)
+                  _submit(context, emailController.text,
+                      passwordController.text, nameController.text)
                 }
 /*                         {showDialog(
                           context: context, 

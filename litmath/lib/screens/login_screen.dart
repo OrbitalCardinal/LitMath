@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/providers/user_provider.dart';
+import 'package:litmath/screens/first_screen.dart';
 import 'package:litmath/utilities/constants.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -9,6 +11,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   Widget _EmailTextField() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: emailController,
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
@@ -41,6 +46,34 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  Future<void> _submit(
+      BuildContext context, String email, String password) async {
+    try {
+      UserProvider().signIn(email, password);
+    } catch (error) {
+      showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+                title: const Text('Error de solicitud HTTP'),
+                content: Text(error.toString()),
+              ));
+      return;
+    }
+    showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+              content: const Text('Inició Sesión Correctamente'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: const Text('Okay'),
+                ),
+              ],
+            )).then((_) {
+      Navigator.of(context).pushReplacementNamed(FirstScreen.routeName);
+    });
+  }
+
   Widget _PasswordTextField() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,6 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: passwordController,
             obscureText: true,
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
@@ -105,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
             style: TextStyle(letterSpacing: 1.5),
           ),
           onPressed: () =>
-              {Navigator.of(context).pushReplacementNamed("/FirstScreen")},
+              {_submit(context, emailController.text, passwordController.text)},
         ));
   }
 
