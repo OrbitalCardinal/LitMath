@@ -3,6 +3,8 @@ import 'package:litmath/screens/first_screen.dart';
 import 'package:litmath/screens/second_screen.dart';
 import 'package:litmath/screens/login_screen.dart';
 import 'package:litmath/screens/signup_screen.dart';
+import 'package:litmath/screens/slide_show_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -17,12 +19,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginScreen(),
+      debugShowCheckedModeBanner: false,
+      home: const SlideShowScreen(),
       routes: {
         FirstScreen.routeName: (ctx) => const FirstScreen(),
         SecondScreen.routeName: (ctx) => const SecondScreen(),
-        LoginScreen.routeName:(ctx) => const LoginScreen(),
-        SignUpScreen.routeName:(ctx) => const SignUpScreen(),
+        LoginScreen.routeName: (ctx) => const LoginScreen(),
+        SignUpScreen.routeName: (ctx) => const SignUpScreen(),
+        SlideShowScreen.routeName: (ctx) => const SlideShowScreen()
       },
     );
   }

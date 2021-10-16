@@ -201,58 +201,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Container(
-            height: double.infinity,
-            width: double.infinity,
-            /*  decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color(0xFF73AEF5),
-                  Color(0xFF61A4F1),
-                  Color(0xFF478DE0),
-                  Color(0xFF398AE5),
-                ],
-                stops: [0.1,0.4,0.7,0.9],
-                ),
-            ), */
-          ),
-          Container(
-            height: double.infinity,
-            child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(
-                horizontal: 40.0,
-                vertical: 120.0,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Crear una cuenta',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'OpenSans',
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 30.0),
-                  _NombreTextField(),
-                  SizedBox(height: 30.0),
-                  _EmailTextField(),
-                  SizedBox(height: 30.0),
-                  _PasswordTextField(),
-                  _RegisterButton(
-                      context, emailController.text, passwordController.text),
-                ],
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        shadowColor: Colors.transparent,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'Crear una cuenta',
+              style: TextStyle(
+                color: Colors.black,
+                fontFamily: 'OpenSans',
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ),
-        ],
+            const SizedBox(height: 30.0),
+            _NombreTextField(),
+            const SizedBox(height: 30.0),
+            _EmailTextField(),
+            const SizedBox(height: 30.0),
+            _PasswordTextField(),
+            _RegisterButton(
+                context, emailController.text, passwordController.text),
+          ],
+        ),
       ),
     );
   }
