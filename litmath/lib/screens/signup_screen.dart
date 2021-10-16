@@ -1,15 +1,61 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/providers/user_provider.dart';
 import 'package:litmath/utilities/constants.dart';
+import 'package:provider/provider.dart';
 
-class RegisterScreen extends StatefulWidget {
-  static const routeName = "/RegisterScreen";
-  const RegisterScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  static const routeName = "/SignUpScreen";
+  const SignUpScreen({Key? key}) : super(key: key);
+
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  _SignUpScreenState createState() => _SignUpScreenState();
 
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
+
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _submit(BuildContext context, String email, String password ) async {
+
+        try {
+          await Provider.of<UserProvider>(context, listen: false)
+              .signup(email, password);
+        } catch (error) {
+          showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+                title: Text('Error de solicitud HTTP'),
+                content: Text(error.toString()),
+              ));
+          return;
+        }
+        showDialog(
+            context: context,
+            builder: (_) => AlertDialog(
+              content: Text('Se envió un correo de verificación'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text('Okay'),
+                ),
+              ],
+            )).then((_) {
+          //Navigator.of(context).pushReplacementNamed(SlidesScreen.routeName);
+        });
+  }
+
   Widget _NombreTextField(){
     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,7 +69,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           alignment: Alignment.centerLeft,
                           decoration: kBoxDecorationStyle,
                           height: 60.0,
-                          child: TextField(keyboardType: TextInputType.emailAddress,
+                          child: TextField(controller: nameController, keyboardType: TextInputType.emailAddress,
                           style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -54,7 +100,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           alignment: Alignment.centerLeft,
                           decoration: kBoxDecorationStyle,
                           height: 60.0,
-                          child: TextField(keyboardType: TextInputType.name,
+                          child: TextField(controller: emailController, keyboardType: TextInputType.name,
                           style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -85,7 +131,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           alignment: Alignment.centerLeft,
                           decoration: kBoxDecorationStyle,
                           height: 60.0,
-                          child: TextField(obscureText: true,
+                          child: TextField(controller: passwordController, obscureText: true,
                           style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -114,7 +160,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
           );
   }
   
-  Widget _RegisterButton() {
+  Widget _RegisterButton(BuildContext context, String email, String password) {
+    
   return Container(
                       padding: EdgeInsets.symmetric(vertical: 25.0),
                       width: double.infinity,
@@ -132,7 +179,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 letterSpacing: 1.5
                               ),
                             ),
-                        onPressed: () => {Navigator.of(context).pushReplacementNamed("/FirstScreen")},
+                        onPressed: () => {_submit(context, emailController.text, passwordController.text)}
+/*                         {showDialog(
+                          context: context, 
+                          builder: (context){
+                            return AlertDialog(
+                              content: Text(emailController.text + '\n' +
+                              nameController.text + '\n' + passwordController.text),
+                            );
+                          })}, */
                       )
                     );
 }
@@ -185,7 +240,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     _EmailTextField(),
                     SizedBox(height: 30.0),
                     _PasswordTextField(),
-                    _RegisterButton(),
+                    _RegisterButton(context, emailController.text,passwordController.text),
                   ],
                 ),
           ),

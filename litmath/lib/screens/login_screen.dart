@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
       alignment: Alignment.centerRight,
       child:TextButton(style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 15),
       ),
-        onPressed: () =>{Navigator.of(context).pushReplacementNamed("/RegisterScreen")},
+        onPressed: () =>{Navigator.of(context).pushReplacementNamed("/SignUpScreen")},
           child: const Text('Crear una cuenta'),
            ),
           );

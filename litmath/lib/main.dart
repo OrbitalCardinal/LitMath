@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:litmath/screens/first_screen.dart';
 import 'package:litmath/screens/second_screen.dart';
 import 'package:litmath/screens/login_screen.dart';
-import 'package:litmath/screens/register_screen.dart';
+import 'package:litmath/screens/signup_screen.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         FirstScreen.routeName: (ctx) => const FirstScreen(),
         SecondScreen.routeName: (ctx) => const SecondScreen(),
         LoginScreen.routeName:(ctx) => const LoginScreen(),
-        RegisterScreen.routeName:(ctx) => const RegisterScreen(),
+        SignUpScreen.routeName:(ctx) => const SignUpScreen(),
       },
     );
   }
