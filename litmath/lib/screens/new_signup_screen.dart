@@ -33,7 +33,7 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
               ),
               Container(
                 margin:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 150),
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 120),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
@@ -58,6 +58,19 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
                             style: TextStyle(color: Colors.grey[700]),
                           ),
                         ],
+                      ),
+                      Theme(
+                        data: Theme.of(context).copyWith(
+                          colorScheme: Theme.of(context).colorScheme.copyWith(
+                                primary: Colors.cyan[600],
+                              ),
+                        ),
+                        child: const TextField(
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            label: Text("Nombre del niño(a)"),
+                          ),
+                        ),
                       ),
                       Theme(
                         data: Theme.of(context).copyWith(
