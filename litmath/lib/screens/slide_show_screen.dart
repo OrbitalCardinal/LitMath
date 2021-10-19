@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:litmath/screens/login_screen.dart';
+import 'package:litmath/screens/new_login_screen.dart';
+import 'package:litmath/screens/new_signup_screen.dart';
 import 'package:litmath/screens/signup_screen.dart';
 import 'package:litmath/screens/slide1_screen.dart';
 import 'package:litmath/screens/slide2_screen.dart';
@@ -60,7 +62,7 @@ class _SlideShowScreenState extends State<SlideShowScreen> {
                             backgroundColor: Colors.cyan[600],
                             fixedSize: const Size(120, 40)),
                         onPressed: () => Navigator.of(context)
-                            .pushNamed(SignUpScreen.routeName),
+                            .pushNamed(NewSignUpScreen.routeName),
                         child: const Text(
                           "Registrarse",
                           style: TextStyle(color: Colors.white),
@@ -69,7 +71,7 @@ class _SlideShowScreenState extends State<SlideShowScreen> {
                       const SizedBox(width: 20),
                       TextButton(
                         onPressed: () => Navigator.of(context)
-                            .pushNamed(LoginScreen.routeName),
+                            .pushNamed(NewLoginScreen.routeName),
                         style: TextButton.styleFrom(
                           backgroundColor: Colors.red[400],
                           fixedSize: const Size(120, 40),

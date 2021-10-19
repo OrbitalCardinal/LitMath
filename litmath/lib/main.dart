@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:litmath/screens/first_screen.dart';
+import 'package:litmath/screens/new_login_screen.dart';
+import 'package:litmath/screens/new_signup_screen.dart';
 import 'package:litmath/screens/second_screen.dart';
 import 'package:litmath/screens/login_screen.dart';
 import 'package:litmath/screens/signup_screen.dart';
@@ -14,10 +16,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = ThemeData();
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: theme.copyWith(
+        colorScheme: theme.colorScheme.copyWith(
+          primary: Colors.red[400],
+          secondary: Colors.blue[600],
+        ),
       ),
       debugShowCheckedModeBanner: false,
       home: const SlideShowScreen(),
@@ -26,7 +32,9 @@ class MyApp extends StatelessWidget {
         SecondScreen.routeName: (ctx) => const SecondScreen(),
         LoginScreen.routeName: (ctx) => const LoginScreen(),
         SignUpScreen.routeName: (ctx) => const SignUpScreen(),
-        SlideShowScreen.routeName: (ctx) => const SlideShowScreen()
+        SlideShowScreen.routeName: (ctx) => const SlideShowScreen(),
+        NewLoginScreen.routeName: (ctx) => const NewLoginScreen(),
+        NewSignUpScreen.routeName: (ctx) => const NewSignUpScreen()
       },
     );
   }
