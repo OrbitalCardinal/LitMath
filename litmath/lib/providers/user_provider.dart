@@ -64,5 +64,9 @@ class UserProvider {
     if (response.statusCode >= 400) {
       throw HttpException('Hubo un problema al iniciar sesion');
     }
+    /* 
+    if(response == null) {
+      throw HttpException('No se encuentra al usuario, Registrese por favor');
+    } */
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/providers/user_provider.dart';
 
 class NewSignUpScreen extends StatefulWidget {
   const NewSignUpScreen({Key? key}) : super(key: key);
@@ -9,6 +10,56 @@ class NewSignUpScreen extends StatefulWidget {
 }
 
 class _NewSignUpScreenState extends State<NewSignUpScreen> {
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+  final _key = GlobalKey<FormState>();
+
+  static final RegExp nameRegExp = RegExp('[a-zA-Z]');
+
+  bool validateStructure(String value) {
+    String pattern =
+        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+    RegExp regExp = new RegExp(pattern);
+    return regExp.hasMatch(value);
+  }
+
+  bool validateEmail(String value) {
+    String pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regExp = new RegExp(pattern);
+    return regExp.hasMatch(value);
+  }
+
+  Future<void> _submit(
+      BuildContext context, String email, String password, String name) async {
+    try {
+      UserProvider().signup(email, password, name);
+    } catch (error) {
+      showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+                title: const Text('Error de solicitud HTTP'),
+                content: Text(error.toString()),
+              ));
+      return;
+    }
+    showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+              content: const Text('Se registró correctamente'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: const Text('Okay'),
+                ),
+              ],
+            )).then((_) {
+      Navigator.of(context).pushReplacementNamed(NewSignUpScreen.routeName);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
@@ -59,60 +110,120 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
                           ),
                         ],
                       ),
-                      Theme(
-                        data: Theme.of(context).copyWith(
-                          colorScheme: Theme.of(context).colorScheme.copyWith(
-                                primary: Colors.cyan[600],
+                      Form(
+                          key: _key,
+                          child: Column(
+                            children: [
+                              Theme(
+                                data: Theme.of(context).copyWith(
+                                  colorScheme:
+                                      Theme.of(context).colorScheme.copyWith(
+                                            primary: Colors.cyan[600],
+                                          ),
+                                ),
+                                child: TextFormField(
+                                  controller: nameController,
+                                  keyboardType: TextInputType.name,
+                                  validator: (value) {
+                                    if (value == null ||
+                                        !nameRegExp.hasMatch(value) ||
+                                        value.toString().isEmpty) {
+                                      return 'Ingrese un nombre valido';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    label: Text("Nombre del niño(a)"),
+                                  ),
+                                ),
                               ),
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            label: Text("Nombre del niño(a)"),
-                          ),
-                        ),
-                      ),
-                      Theme(
-                        data: Theme.of(context).copyWith(
-                          colorScheme: Theme.of(context).colorScheme.copyWith(
-                                primary: Colors.cyan[600],
+                              SizedBox(height: 20),
+                              Theme(
+                                data: Theme.of(context).copyWith(
+                                  colorScheme:
+                                      Theme.of(context).colorScheme.copyWith(
+                                            primary: Colors.cyan[600],
+                                          ),
+                                ),
+                                child: TextFormField(
+                                  controller: emailController,
+                                  keyboardType: TextInputType.emailAddress,
+                                  validator: (value) {
+                                    if (value == null ||
+                                        !validateEmail(value) ||
+                                        value.toString().isEmpty) {
+                                      return 'Ingrese un email valido';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      label: Text("Correo electronico")),
+                                ),
                               ),
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              label: Text("Correo electronico")),
-                        ),
-                      ),
-                      // SizedBox(height: 20),
-                      Theme(
-                        data: Theme.of(context).copyWith(
-                          colorScheme: Theme.of(context).colorScheme.copyWith(
-                                primary: Colors.cyan[600],
+                              SizedBox(height: 20),
+                              Theme(
+                                data: Theme.of(context).copyWith(
+                                  colorScheme:
+                                      Theme.of(context).colorScheme.copyWith(
+                                            primary: Colors.cyan[600],
+                                          ),
+                                ),
+                                child: TextFormField(
+                                  controller: passwordController,
+                                  obscureText: true,
+                                  validator: (value) {
+                                    if (value == null ||
+                                        validateStructure(value) ||
+                                        value.toString().isEmpty) {
+                                      return 'Ingrese una contraseña valida';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    label: Text("Contraseña"),
+                                  ),
+                                ),
                               ),
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            label: Text("Contraseña"),
-                          ),
-                        ),
-                      ),
-                      Theme(
-                        data: Theme.of(context).copyWith(
-                          colorScheme: Theme.of(context).colorScheme.copyWith(
-                                primary: Colors.cyan[600],
+                              SizedBox(height: 20),
+                              Theme(
+                                data: Theme.of(context).copyWith(
+                                  colorScheme:
+                                      Theme.of(context).colorScheme.copyWith(
+                                            primary: Colors.cyan[600],
+                                          ),
+                                ),
+                                child: TextFormField(
+                                  controller: confirmPasswordController,
+                                  obscureText: true,
+                                  validator: (value) {
+                                    if (value == null ||
+                                        validateStructure(value) ||
+                                        value.toString().isEmpty) {
+                                      return 'Ingrese una contraseña valida';
+                                    }
+                                    if (value != passwordController.text) {
+                                      return 'La contraseña no coincide';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    label: Text("Confirmar contraseña"),
+                                  ),
+                                ),
                               ),
-                        ),
-                        child: TextFormField(
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            label: Text("Confirmar contraseña"),
-                          ),
-                        ),
-                      ),
+                            ],
+                          )),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (_key.currentState!.validate()) {
+                            _submit(context, emailController.text,
+                                passwordController.text, nameController.text);
+                          }
+                        },
                         style: TextButton.styleFrom(
                             backgroundColor: Colors.cyan[600]),
                         child: const Text(
