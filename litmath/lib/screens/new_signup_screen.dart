@@ -84,7 +84,7 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
               ),
               Container(
                 margin:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 120),
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 100),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
