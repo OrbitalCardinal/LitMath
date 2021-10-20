@@ -5,6 +5,7 @@ import 'package:litmath/screens/new_signup_screen.dart';
 import 'package:litmath/screens/signup_screen.dart';
 import 'package:litmath/screens/slide1_screen.dart';
 import 'package:litmath/screens/slide2_screen.dart';
+import 'package:sizer/sizer.dart';
 
 class SlideShowScreen extends StatefulWidget {
   const SlideShowScreen({Key? key}) : super(key: key);
@@ -53,14 +54,14 @@ class _SlideShowScreenState extends State<SlideShowScreen> {
                           : Colors.white),
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 5.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextButton(
                         style: TextButton.styleFrom(
                             backgroundColor: Colors.cyan[600],
-                            fixedSize: const Size(120, 40)),
+                            fixedSize: Size(30.w, 6.6.h)),
                         onPressed: () => Navigator.of(context)
                             .pushNamed(NewSignUpScreen.routeName),
                         child: const Text(
@@ -68,17 +69,19 @@ class _SlideShowScreenState extends State<SlideShowScreen> {
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
-                      const SizedBox(width: 20),
+                      SizedBox(width: 5.w),
                       TextButton(
                         onPressed: () => Navigator.of(context)
                             .pushNamed(NewLoginScreen.routeName),
                         style: TextButton.styleFrom(
                           backgroundColor: Colors.red[400],
-                          fixedSize: const Size(120, 40),
+                          fixedSize: Size(30.w, 6.6.h),
                         ),
                         child: const Text(
                           "Iniciar sesión",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                            
+                            color: Colors.white),
                         ),
                       ),
                     ],

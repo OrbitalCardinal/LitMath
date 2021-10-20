@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:sizer/sizer.dart';
 class Slide1Screen extends StatelessWidget {
   const Slide1Screen({Key? key}) : super(key: key);
 
@@ -9,25 +9,25 @@ class Slide1Screen extends StatelessWidget {
       padding: const EdgeInsets.all(40),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children:  [
           Image(
-            width: 250,
+            width: 55.w,
             image: AssetImage('assets/imgs/Slide1.png'),
           ),
           SizedBox(
-            height: 20,
+            height: 1.5.h,
           ),
           Text(
             "¡Aprende con LitMath!",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17.sp),
           ),
           SizedBox(
-            height: 20,
+            height: 1.h,
           ),
           Text(
             "Aprender nunca había sido tan divertido. LitMath cuenta con actividades diseñadas para mejorar el pensamiento matemático de los niños.",
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 14.sp,
             ),
           ),
         ],

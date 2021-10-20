@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:litmath/providers/user_provider.dart';
+import 'package:sizer/sizer.dart';
 
 class NewSignUpScreen extends StatefulWidget {
   const NewSignUpScreen({Key? key}) : super(key: key);
@@ -77,15 +78,16 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
           height: deviceHeight,
           child: Stack(
             children: [
-              const Image(
+              Image(
                 image: AssetImage("assets/imgs/signupBackground.png"),
                 fit: BoxFit.cover,
                 height: double.infinity,
+                width: 100.w,
                 alignment: Alignment.center,
               ),
               Container(
                 margin:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 120),
+                    EdgeInsets.symmetric(horizontal: 15.2.w, vertical: 17.h),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
@@ -94,20 +96,20 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
                 height: double.infinity,
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
+                       EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
                         children: [
-                          const Text(
+                           Text(
                             "Bienvenido a LitMath",
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 17.sp),
                           ),
                           Text(
                             "Registrate para que puedas aprovechar los beneficios de aprender con LitMath",
                             textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.grey[700]),
+                            style: TextStyle(color: Colors.grey[700], fontSize: 12.sp),
                           ),
                         ],
                       ),
@@ -134,12 +136,13 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
                                     return null;
                                   },
                                   decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.symmetric(vertical: 1.h,horizontal: 3.w ),
                                     border: OutlineInputBorder(),
                                     label: Text("Nombre del niño(a)"),
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 20),
+                              SizedBox(height: 2.h),
                               Theme(
                                 data: Theme.of(context).copyWith(
                                   colorScheme:
@@ -159,11 +162,12 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
                                     return null;
                                   },
                                   decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.symmetric(vertical: 1.h,horizontal: 3.w ),
                                       border: OutlineInputBorder(),
                                       label: Text("Correo electronico")),
                                 ),
                               ),
-                              SizedBox(height: 20),
+                              SizedBox(height: 2.h),
                               Theme(
                                 data: Theme.of(context).copyWith(
                                   colorScheme:
@@ -183,12 +187,13 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
                                     return null;
                                   },
                                   decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.symmetric(vertical: 1.h,horizontal: 3.w ),
                                     border: OutlineInputBorder(),
                                     label: Text("Contraseña"),
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 20),
+                              SizedBox(height: 2.h),
                               Theme(
                                 data: Theme.of(context).copyWith(
                                   colorScheme:
@@ -210,7 +215,8 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
                                     }
                                     return null;
                                   },
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.symmetric(vertical: 1.h,horizontal: 3.w ),
                                     border: OutlineInputBorder(),
                                     label: Text("Confirmar contraseña"),
                                   ),

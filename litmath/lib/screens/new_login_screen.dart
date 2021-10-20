@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:litmath/providers/user_provider.dart';
+import 'package:sizer/sizer.dart';
 
 class NewLoginScreen extends StatefulWidget {
   const NewLoginScreen({Key? key}) : super(key: key);
@@ -76,15 +77,16 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
           height: deviceHeight,
           child: Stack(
             children: [
-              const Image(
+              Image(
                 image: AssetImage("assets/imgs/loginBackground.png"),
                 fit: BoxFit.cover,
                 height: double.infinity,
+                width: 100.w,
                 alignment: Alignment.center,
               ),
               Container(
                 margin:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 200),
+                    EdgeInsets.symmetric(horizontal: 15.2.w, vertical: 27.h),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
@@ -93,19 +95,19 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
                 height: double.infinity,
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
+                      EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.h),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
                         children: [
-                          const Text(
+                          Text(
                             "Bienvenido a LitMath",
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 17.sp),
                           ),
                           Text(
                             "Inicia sesión para empezar a aprender",
-                            style: TextStyle(color: Colors.grey[700]),
+                            style: TextStyle(color: Colors.grey[700],fontSize: 14.sp),
                           ),
                         ],
                       ),
@@ -125,6 +127,7 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
                                   return null;
                                 },
                                 decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.symmetric(vertical: 1.h,horizontal: 3.w ),
                                     border: OutlineInputBorder(),
                                     label: Text("Correo electronico")),
                               ),
@@ -142,6 +145,7 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
                                   return null;
                                 },
                                 decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.symmetric(vertical: 1.h,horizontal: 3.w ),
                                   border: OutlineInputBorder(),
                                   label: Text("Contraseña"),
                                 ),
