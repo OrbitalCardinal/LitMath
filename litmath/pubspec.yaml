@@ -65,6 +65,9 @@ flutter:
     - assets/imgs/Slide2.png
     - assets/imgs/loginBackground.png
     - assets/imgs/signupBackground.png
+    - assets/imgs/preescolar.png
+    - assets/imgs/primaria.png
+    - assets/imgs/secundaria.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
