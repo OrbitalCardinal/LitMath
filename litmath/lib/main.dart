@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/screens/elementary_screen.dart';
 import 'package:litmath/screens/first_screen.dart';
+import 'package:litmath/screens/kinder_screen.dart';
+import 'package:litmath/screens/middle_screen.dart';
 import 'package:litmath/screens/new_login_screen.dart';
 import 'package:litmath/screens/new_signup_screen.dart';
 import 'package:litmath/screens/second_screen.dart';
@@ -36,7 +39,10 @@ class MyApp extends StatelessWidget {
         SlideShowScreen.routeName: (ctx) => const SlideShowScreen(),
         NewLoginScreen.routeName: (ctx) => const NewLoginScreen(),
         NewSignUpScreen.routeName: (ctx) => const NewSignUpScreen(),
-        SelectionScreen.routeName: (ctx) => const SelectionScreen()
+        SelectionScreen.routeName: (ctx) => const SelectionScreen(),
+        KinderScreen.routeName: (ctx) => const KinderScreen(),
+        ElementaryScreen.routeName: (ctx) => const ElementaryScreen(),
+        MiddleScreen.routeName: (ctx) => const MiddleScreen()
       },
     );
   }

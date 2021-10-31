@@ -68,6 +68,17 @@ flutter:
     - assets/imgs/preescolar.png
     - assets/imgs/primaria.png
     - assets/imgs/secundaria.png
+    - assets/imgs/conteo.png
+    - assets/imgs/division.png
+    - assets/imgs/ecuaciones.png
+    - assets/imgs/comparacion.png
+    - assets/imgs/fracciones.png
+    - assets/imgs/geometria.png
+    - assets/imgs/multiplicacion.png
+    - assets/imgs/reglatres.png
+    - assets/imgs/resta.png
+    - assets/imgs/series.png
+    - assets/imgs/suma.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
