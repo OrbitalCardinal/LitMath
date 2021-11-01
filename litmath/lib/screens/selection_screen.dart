@@ -57,7 +57,7 @@ class SelectionScreen extends StatelessWidget {
             ),
             ScholarshipCard(
               imageUrl: "assets/imgs/primaria.png",
-              title: "Primaria",
+              title: "1° y 2° de Primaria",
               color: Colors.purple,
               routeName: ElementaryScreen.routeName,
             ),
@@ -66,7 +66,7 @@ class SelectionScreen extends StatelessWidget {
             ),
             ScholarshipCard(
               imageUrl: "assets/imgs/secundaria.png",
-              title: "Secundaria",
+              title: "3° de Primaria",
               color: Colors.cyan.shade400,
               routeName: MiddleScreen.routeName,
             ),
