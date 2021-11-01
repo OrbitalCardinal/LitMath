@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:litmath/providers/user_provider.dart';
+import 'package:litmath/screens/slide_show_screen.dart';
 
 class NewSignUpScreen extends StatefulWidget {
   const NewSignUpScreen({Key? key}) : super(key: key);
@@ -56,7 +57,7 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
                 ),
               ],
             )).then((_) {
-      Navigator.of(context).pushReplacementNamed(NewSignUpScreen.routeName);
+      Navigator.of(context).pushReplacementNamed(SlideShowScreen.routeName);
     });
   }
 

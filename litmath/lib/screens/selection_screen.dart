@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:litmath/screens/elementary_screen.dart';
 import 'package:litmath/screens/kinder_screen.dart';
 import 'package:litmath/screens/middle_screen.dart';
+import 'package:litmath/screens/settings_screen.dart';
 import 'package:litmath/widgets/scholarship_card.dart';
 
 class SelectionScreen extends StatelessWidget {
@@ -33,7 +34,9 @@ class SelectionScreen extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.settings),
               title: const Text("Configuración"),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushNamed(SettingsScreen.routeName);
+              },
             )
           ],
         ),

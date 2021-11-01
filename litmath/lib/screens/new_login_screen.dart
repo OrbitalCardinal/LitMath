@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:litmath/providers/user_provider.dart';
+import 'package:litmath/screens/selection_screen.dart';
 
 class NewLoginScreen extends StatefulWidget {
   const NewLoginScreen({Key? key}) : super(key: key);
@@ -56,7 +57,7 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
                 ),
               ],
             )).then((_) {
-      Navigator.of(context).pushReplacementNamed(NewLoginScreen.routeName);
+      Navigator.of(context).pushReplacementNamed(SelectionScreen.routeName);
     });
   }
 

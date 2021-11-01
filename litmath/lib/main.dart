@@ -8,6 +8,7 @@ import 'package:litmath/screens/new_signup_screen.dart';
 import 'package:litmath/screens/second_screen.dart';
 import 'package:litmath/screens/login_screen.dart';
 import 'package:litmath/screens/selection_screen.dart';
+import 'package:litmath/screens/settings_screen.dart';
 import 'package:litmath/screens/signup_screen.dart';
 import 'package:litmath/screens/slide_show_screen.dart';
 
@@ -42,7 +43,8 @@ class MyApp extends StatelessWidget {
         SelectionScreen.routeName: (ctx) => const SelectionScreen(),
         KinderScreen.routeName: (ctx) => const KinderScreen(),
         ElementaryScreen.routeName: (ctx) => const ElementaryScreen(),
-        MiddleScreen.routeName: (ctx) => const MiddleScreen()
+        MiddleScreen.routeName: (ctx) => const MiddleScreen(),
+        SettingsScreen.routeName: (ctx) => const SettingsScreen()
       },
     );
   }
