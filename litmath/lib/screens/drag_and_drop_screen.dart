@@ -12,50 +12,61 @@ class DragAndDropScreen extends StatefulWidget {
 }
 
 class _DragAndDropScreenState extends State<DragAndDropScreen> {
-  final Map<String, bool> score = {'': true};
-
-  final Map choices = {};
-
-  Map<int, Widget> itemsMap = {
-    0: Image.asset('assets/imgs/corazon.png'),
-    1: Image.asset('assets/imgs/diamante.png'),
-    2: Container(
-      decoration:
-          BoxDecoration(border: Border.all(color: Colors.black, width: 2)),
-    )
-  };
-
-  // Map<Image, int> images = {
-  //   Image.asset('assets/imgs/corazon.png'): 0,
-  //   Image.asset('assets/imgs/diamante.png'): 1
-  // }
-
-  List<String> activity = [
-    'assets/imgs/corazon.png',
-    'assets/imgs/diamante.png',
-    'assets/imgs/corazon.png',
-    'assets/imgs/diamante.png'
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final Map<String, bool> score = {'': true};
+
+    final Map choices = {};
+
+    List<String> activity = [
+      'assets/imgs/corazon.png',
+      'assets/imgs/diamante.png',
+      'assets/imgs/corazon.png',
+      'assets/imgs/diamante.png'
+    ];
+
     List<int> answer = [0, 1, 0, 1, 0, 1];
     List<int> userAnswer = [0, 1, 0, 1, 2, 2];
-    return Scaffold(
-        body: Container(
-      margin: const EdgeInsets.only(top: 40.0),
-      height: 30,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: userAnswer.map(
-          (item) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: itemsMap[item] ?? Container(),
-            );
-          },
-        ).toList(),
+    const double itemsSize = 30;
+    Map<int, Widget> itemsMap = {
+      0: const Image(
+        image: AssetImage('assets/imgs/corazon.png'),
+        width: itemsSize,
       ),
-    ));
+      1: const Image(
+        image: AssetImage('assets/imgs/diamante.png'),
+        width: itemsSize,
+      ),
+      2: Container(
+        width: itemsSize,
+        height: itemsSize,
+        decoration:
+            BoxDecoration(border: Border.all(color: Colors.black, width: 2)),
+      )
+    };
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Nombre actividad"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: userAnswer.map(
+                (item) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: itemsMap[item] ?? Container(),
+                  );
+                },
+              ).toList(),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
