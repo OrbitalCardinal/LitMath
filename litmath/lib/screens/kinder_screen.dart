@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:litmath/widgets/scholarship_card.dart';
-
+import 'drag_and_drop_screen.dart';
 class KinderScreen extends StatelessWidget {
   const KinderScreen({Key? key}) : super(key: key);
   static const routeName = "/kinderScreen";
@@ -25,10 +25,10 @@ class KinderScreen extends StatelessWidget {
               height: 50,
             ),
             ScholarshipCard(
-                imageUrl: "assets/imgs/comparacion.png",
-                title: "Comparación",
+                imageUrl: "assets/imgs/patrones.png",
+                title: "Patrones",
                 color: Colors.lightBlue,
-                routeName: ""),
+                routeName: DragAndDropScreen.routeName),
             const SizedBox(
               height: 50,
             ),
@@ -47,7 +47,9 @@ class KinderScreen extends StatelessWidget {
                 routeName: ""),
             const SizedBox(
               height: 50,
+              
             ),
+            
           ],
         ),
       ),

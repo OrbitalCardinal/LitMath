@@ -11,7 +11,7 @@ import 'package:litmath/screens/selection_screen.dart';
 import 'package:litmath/screens/settings_screen.dart';
 import 'package:litmath/screens/signup_screen.dart';
 import 'package:litmath/screens/slide_show_screen.dart';
-
+import 'package:litmath/screens/drag_and_drop_screen.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -31,7 +31,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: const SelectionScreen(),
+      //home: const SelectionScreen(),
+      home: const DragAndDropScreen(),
       routes: {
         FirstScreen.routeName: (ctx) => const FirstScreen(),
         SecondScreen.routeName: (ctx) => const SecondScreen(),
@@ -44,7 +45,8 @@ class MyApp extends StatelessWidget {
         KinderScreen.routeName: (ctx) => const KinderScreen(),
         ElementaryScreen.routeName: (ctx) => const ElementaryScreen(),
         MiddleScreen.routeName: (ctx) => const MiddleScreen(),
-        SettingsScreen.routeName: (ctx) => const SettingsScreen()
+        SettingsScreen.routeName: (ctx) => const SettingsScreen(),
+        DragAndDropScreen.routeName: (ctx) => const DragAndDropScreen()
       },
     );
   }

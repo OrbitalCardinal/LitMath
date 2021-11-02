@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.4
   provider: ^6.0.1
+  deep_collection: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +80,10 @@ flutter:
     - assets/imgs/resta.png
     - assets/imgs/series.png
     - assets/imgs/suma.png
+    - assets/imgs/patrones.png
+    - assets/imgs/corazon.png
+    - assets/imgs/diamante.png
+    - assets/imgs/triangulo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
