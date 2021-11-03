@@ -27,6 +27,7 @@ class _DragAndDropScreenState extends State<DragAndDropScreen> {
 
     List<int> answer = [0, 1, 0, 1, 0, 1];
     List<int> userAnswer = [0, 1, 0, 1, 2, 2];
+    List<int> options = [0, 1];
     const double itemsSize = 30;
     Map<int, Widget> itemsMap = {
       0: const Image(
@@ -61,12 +62,46 @@ class _DragAndDropScreenState extends State<DragAndDropScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: itemsMap[item] ?? Container(),
                   );
+                  
                 },
               ).toList(),
             ),
+            const SizedBox(
+              height: 50,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: options.map(
+                (item) {
+                  return Draggable<int>(
+                    data: item,
+                    child: itemsMap[item] ?? Container(),
+                    feedback: itemsMap[item] ?? Container(),
+                    childWhenDragging: Container(
+                      width: itemsSize,
+                      height: itemsSize,
+                      decoration: BoxDecoration(),
+                    ),
+                  );
+                },
+              ).toList(),
+            )
           ],
         ),
       ),
     );
   }
+
+  Widget _buildDragTarget(item) {
+    return DragTarget<int>(builder: (BuildContext context, List<int?> incoming, List rejected){
+      return Container(
+        width: 30,
+        height: 30,
+        decoration:
+            BoxDecoration(border: Border.all(color: Colors.black, width: 2)),
+      );
+    },
+    );
+  }
+  
 }
