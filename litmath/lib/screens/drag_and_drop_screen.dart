@@ -27,7 +27,7 @@ class _DragAndDropScreenState extends State<DragAndDropScreen> {
 
     List<int> answer = [0, 1, 0, 1, 0, 1];
     List<int> userAnswer = [0, 1, 0, 1, 2, 2];
-    List<int> options = [0, 1];
+    Map<int, int> options = {0: 4, 1: 5};
     const double itemsSize = 30;
     Map<int, Widget> itemsMap = {
       0: const Image(
@@ -56,13 +56,40 @@ class _DragAndDropScreenState extends State<DragAndDropScreen> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: userAnswer.map(
-                (item) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: itemsMap[item] ?? Container(),
-                  );
-                  
+              children: userAnswer.asMap().entries.map(
+                (entry) {
+                  int item = entry.value;
+                  int index = entry.key;
+                  if (item != 2) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: itemsMap[item] ?? Container(),
+                    );
+                  } else {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: DragTarget<List>(
+                        builder: (context, candidateItems, rejectedItems) {
+                          return Container(
+                            width: 50,
+                            height: 50,
+                            color: Colors.red,
+                          );
+                        },
+                        onAccept: (data) {
+                          print(data[0]);
+                          setState(() {
+                            userAnswer = [0, 1, 0, 1, 0, 0];
+                          });
+                          print(userAnswer);
+                        },
+                        onWillAccept: (data) {
+                          return true;
+                        },
+                      ),
+                      // child: itemsMap[item] ?? Container(),
+                    );
+                  }
                 },
               ).toList(),
             ),
@@ -71,20 +98,19 @@ class _DragAndDropScreenState extends State<DragAndDropScreen> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: options.map(
-                (item) {
-                  return Draggable<int>(
-                    data: item,
-                    child: itemsMap[item] ?? Container(),
-                    feedback: itemsMap[item] ?? Container(),
-                    childWhenDragging: Container(
-                      width: itemsSize,
-                      height: itemsSize,
-                      decoration: BoxDecoration(),
-                    ),
-                  );
-                },
-              ).toList(),
+              children: options.entries.map((entry) {
+                int index = entry.key;
+                int item = entry.value;
+                return Draggable<List>(
+                  data: [item, index],
+                  child: itemsMap[index] ?? Container(),
+                  feedback: itemsMap[index] ?? Container(),
+                  childWhenDragging: const SizedBox(
+                    width: itemsSize,
+                    height: itemsSize,
+                  ),
+                );
+              }).toList(),
             )
           ],
         ),
@@ -93,15 +119,15 @@ class _DragAndDropScreenState extends State<DragAndDropScreen> {
   }
 
   Widget _buildDragTarget(item) {
-    return DragTarget<int>(builder: (BuildContext context, List<int?> incoming, List rejected){
-      return Container(
-        width: 30,
-        height: 30,
-        decoration:
-            BoxDecoration(border: Border.all(color: Colors.black, width: 2)),
-      );
-    },
+    return DragTarget<int>(
+      builder: (BuildContext context, List<int?> incoming, List rejected) {
+        return Container(
+          width: 30,
+          height: 30,
+          decoration:
+              BoxDecoration(border: Border.all(color: Colors.black, width: 2)),
+        );
+      },
     );
   }
-  
 }
