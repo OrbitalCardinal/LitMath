@@ -11,6 +11,24 @@ class DragAndDropScreen extends StatefulWidget {
   _DragAndDropScreenState createState() => _DragAndDropScreenState();
 }
 
+class Shape {
+  int id = 0;
+  String shapeImg = '';
+
+  Shape({required this.id, required this.shapeImg});
+  
+}
+final shapes = [
+  Shape(
+    id: 0,
+    shapeImg: 'assets/imgs/corazon.png',
+  ),
+  Shape(
+    id: 1,
+    shapeImg: 'assets/imgs/diamante.png',
+  )
+];
+
 class _DragAndDropScreenState extends State<DragAndDropScreen> {
   @override
   Widget build(BuildContext context) {
@@ -29,6 +47,7 @@ class _DragAndDropScreenState extends State<DragAndDropScreen> {
     List<int> userAnswer = [0, 1, 0, 1, 2, 2];
     List<int> options = [0, 1];
     const double itemsSize = 30;
+    
     Map<int, Widget> itemsMap = {
       0: const Image(
         image: AssetImage('assets/imgs/corazon.png'),
@@ -38,12 +57,6 @@ class _DragAndDropScreenState extends State<DragAndDropScreen> {
         image: AssetImage('assets/imgs/diamante.png'),
         width: itemsSize,
       ),
-      2: Container(
-        width: itemsSize,
-        height: itemsSize,
-        decoration:
-            BoxDecoration(border: Border.all(color: Colors.black, width: 2)),
-      )
     };
 
     return Scaffold(
@@ -62,21 +75,24 @@ class _DragAndDropScreenState extends State<DragAndDropScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: itemsMap[item] ?? Container(),
                   );
-                  
                 },
               ).toList(),
             ),
             const SizedBox(
               height: 50,
             ),
+            //_buildDragTarget(),
+            const SizedBox(
+              height: 50,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: options.map(
-                (item) {
+                (shape) {
                   return Draggable<int>(
-                    data: item,
-                    child: itemsMap[item] ?? Container(),
-                    feedback: itemsMap[item] ?? Container(),
+                    data: shape,
+                    child: itemsMap[shape] ?? Container(),
+                    feedback: Text(options[shape].toString()),
                     childWhenDragging: Container(
                       width: itemsSize,
                       height: itemsSize,
@@ -92,16 +108,32 @@ class _DragAndDropScreenState extends State<DragAndDropScreen> {
     );
   }
 
-  Widget _buildDragTarget(item) {
-    return DragTarget<int>(builder: (BuildContext context, List<int?> incoming, List rejected){
-      return Container(
-        width: 30,
-        height: 30,
-        decoration:
-            BoxDecoration(border: Border.all(color: Colors.black, width: 2)),
-      );
-    },
-    );
-  }
-  
+  // Widget _buildDragTarget(item) {
+  //   bool accepted = false;
+  //   return DragTarget<int>(builder: (context, List<int?> candidateData, rejectedData){
+  //     if(item == int) {
+  //       return Text(item.toString());
+  //     } else {
+  //       return Container(
+  //       width: 30,
+  //       height: 30,
+  //       decoration:
+  //           BoxDecoration(border: Border.all(color: Colors.black, width: 2)),
+  //     );
+  //     }
+  //   },
+  //   onWillAccept: (data) {
+  //     if(data == item) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   },
+  //   onAccept: (data) {
+  //     accepted = true;
+  //   },
+  //   );
+  // }
+
+
 }

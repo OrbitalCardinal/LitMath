@@ -49,7 +49,7 @@ class SelectionScreen extends StatelessWidget {
             ScholarshipCard(
               imageUrl: "assets/imgs/preescolar.png",
               title: "Preescolar",
-              color: Colors.lightBlue,
+              color: Colors.cyan.shade400,
               routeName: KinderScreen.routeName,
             ),
             const SizedBox(
@@ -57,8 +57,17 @@ class SelectionScreen extends StatelessWidget {
             ),
             ScholarshipCard(
               imageUrl: "assets/imgs/primaria.png",
-              title: "1° y 2° de Primaria",
+              title: "1° de Primaria",
               color: Colors.purple,
+              routeName: ElementaryScreen.routeName,
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            ScholarshipCard(
+              imageUrl: "assets/imgs/primaria2.png",
+              title: "2° de Primaria",
+              color: Colors.green,
               routeName: ElementaryScreen.routeName,
             ),
             const SizedBox(
@@ -67,7 +76,7 @@ class SelectionScreen extends StatelessWidget {
             ScholarshipCard(
               imageUrl: "assets/imgs/secundaria.png",
               title: "3° de Primaria",
-              color: Colors.cyan.shade400,
+              color: Colors.red,
               routeName: MiddleScreen.routeName,
             ),
           ],
