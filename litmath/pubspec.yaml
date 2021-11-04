@@ -84,6 +84,27 @@ flutter:
     - assets/imgs/corazon.png
     - assets/imgs/diamante.png
     - assets/imgs/triangulo.png
+    - assets/imgs/primaria2.png
+    - assets/patrones_screen_assets/patron_1.png
+    - assets/patrones_screen_assets/patron_1_correcto.png
+    - assets/patrones_screen_assets/patron_1_opcion_2.png
+    - assets/patrones_screen_assets/patron_1_opcion_3.png
+    - assets/patrones_screen_assets/patron_2.png
+    - assets/patrones_screen_assets/patron_2_correcto.png
+    - assets/patrones_screen_assets/patron_2_opcion_2.png
+    - assets/patrones_screen_assets/patron_2_opcion_3.png
+    - assets/patrones_screen_assets/patron_3.png
+    - assets/patrones_screen_assets/patron_3_correcto.png
+    - assets/patrones_screen_assets/patron_3_opcion_2.png
+    - assets/patrones_screen_assets/patron_3_opcion_3.png
+    - assets/patrones_screen_assets/patron_4.png
+    - assets/patrones_screen_assets/patron_4_correcto.png
+    - assets/patrones_screen_assets/patron_4_opcion_2.png
+    - assets/patrones_screen_assets/patron_4_opcion_3.png
+    - assets/patrones_screen_assets/patron_5.png
+    - assets/patrones_screen_assets/patron_5_correcto.png
+    - assets/patrones_screen_assets/patron_5_opcion_2.png
+    - assets/patrones_screen_assets/patron_5_opcion_3.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

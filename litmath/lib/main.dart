@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       // home: const SelectionScreen(),
-      home: const CountingActivtyScreen(),
+      home: const SelectionScreen(),
       routes: {
         FirstScreen.routeName: (ctx) => const FirstScreen(),
         SecondScreen.routeName: (ctx) => const SecondScreen(),
