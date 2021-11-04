@@ -85,6 +85,9 @@ flutter:
     - assets/imgs/diamante.png
     - assets/imgs/triangulo.png
     - assets/imgs/primaria2.png
+    - assets/imgs/tridimensional.png
+    - assets/imgs/plano.png
+    - assets/imgs/probabilidad.png
     - assets/patrones_screen_assets/patron_1.png
     - assets/patrones_screen_assets/patron_1_correcto.png
     - assets/patrones_screen_assets/patron_1_opcion_2.png

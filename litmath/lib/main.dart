@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:litmath/screens/couting_activity_screen.dart';
-import 'package:litmath/screens/elementary_screen.dart';
+import 'package:litmath/screens/first_elementary_screen.dart';
+import 'package:litmath/screens/second_elementary_screen.dart';
+import 'package:litmath/screens/third_elementary_screen.dart';
 import 'package:litmath/screens/first_screen.dart';
 import 'package:litmath/screens/kinder_screen.dart';
 import 'package:litmath/screens/middle_screen.dart';
@@ -45,7 +47,9 @@ class MyApp extends StatelessWidget {
         NewSignUpScreen.routeName: (ctx) => const NewSignUpScreen(),
         SelectionScreen.routeName: (ctx) => const SelectionScreen(),
         KinderScreen.routeName: (ctx) => const KinderScreen(),
-        ElementaryScreen.routeName: (ctx) => const ElementaryScreen(),
+        FirstElementaryScreen.routeName: (ctx) => const FirstElementaryScreen(),
+        SecondElementaryScreen.routeName: (ctx) => const SecondElementaryScreen(),
+        ThirdElementaryScreen.routeName: (ctx) => const ThirdElementaryScreen(),
         MiddleScreen.routeName: (ctx) => const MiddleScreen(),
         SettingsScreen.routeName: (ctx) => const SettingsScreen(),
         DragAndDropScreen.routeName: (ctx) => const DragAndDropScreen(),

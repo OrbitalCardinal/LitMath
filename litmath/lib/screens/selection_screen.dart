@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:litmath/screens/elementary_screen.dart';
+import 'package:litmath/screens/first_elementary_screen.dart';
+import 'package:litmath/screens/second_elementary_screen.dart';
+import 'package:litmath/screens/third_elementary_screen.dart';
 import 'package:litmath/screens/kinder_screen.dart';
 import 'package:litmath/screens/middle_screen.dart';
 import 'package:litmath/screens/settings_screen.dart';
@@ -59,7 +61,7 @@ class SelectionScreen extends StatelessWidget {
               imageUrl: "assets/imgs/primaria.png",
               title: "1° de Primaria",
               color: Colors.purple,
-              routeName: ElementaryScreen.routeName,
+              routeName: FirstElementaryScreen.routeName,
             ),
             const SizedBox(
               height: 50,
@@ -68,7 +70,7 @@ class SelectionScreen extends StatelessWidget {
               imageUrl: "assets/imgs/primaria2.png",
               title: "2° de Primaria",
               color: Colors.green,
-              routeName: ElementaryScreen.routeName,
+              routeName: SecondElementaryScreen.routeName,
             ),
             const SizedBox(
               height: 50,
@@ -77,7 +79,7 @@ class SelectionScreen extends StatelessWidget {
               imageUrl: "assets/imgs/secundaria.png",
               title: "3° de Primaria",
               color: Colors.red,
-              routeName: MiddleScreen.routeName,
+              routeName: ThirdElementaryScreen.routeName,
             ),
           ],
         ),
