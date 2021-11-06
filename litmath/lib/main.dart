@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:litmath/screens/couting_activity_screen.dart';
 import 'package:litmath/screens/first_elementary_screen.dart';
+import 'package:litmath/screens/patterns_screen.dart';
 import 'package:litmath/screens/second_elementary_screen.dart';
+import 'package:litmath/screens/sum_screen.dart';
 import 'package:litmath/screens/third_elementary_screen.dart';
 import 'package:litmath/screens/first_screen.dart';
 import 'package:litmath/screens/kinder_screen.dart';
@@ -27,7 +29,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData();
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: theme.copyWith(
         colorScheme: theme.colorScheme.copyWith(
           primary: Colors.red[400],
@@ -35,7 +36,6 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      // home: const SelectionScreen(),
       home: const SelectionScreen(),
       routes: {
         FirstScreen.routeName: (ctx) => const FirstScreen(),
@@ -48,12 +48,15 @@ class MyApp extends StatelessWidget {
         SelectionScreen.routeName: (ctx) => const SelectionScreen(),
         KinderScreen.routeName: (ctx) => const KinderScreen(),
         FirstElementaryScreen.routeName: (ctx) => const FirstElementaryScreen(),
-        SecondElementaryScreen.routeName: (ctx) => const SecondElementaryScreen(),
+        SecondElementaryScreen.routeName: (ctx) =>
+            const SecondElementaryScreen(),
         ThirdElementaryScreen.routeName: (ctx) => const ThirdElementaryScreen(),
         MiddleScreen.routeName: (ctx) => const MiddleScreen(),
         SettingsScreen.routeName: (ctx) => const SettingsScreen(),
         DragAndDropScreen.routeName: (ctx) => const DragAndDropScreen(),
-        CountingActivtyScreen.routeName: (ctx) => const CountingActivtyScreen()
+        CountingActivtyScreen.routeName: (ctx) => const CountingActivtyScreen(),
+        PatternsScreen.routeName: (ctx) => const PatternsScreen(),
+        SumScreen.routeName: (ctx) => const SumScreen()
       },
     );
   }

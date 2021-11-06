@@ -53,7 +53,7 @@ class ThirdElementaryScreen extends StatelessWidget {
                 ),
                 ScholarshipCard(
                     imageUrl: "assets/imgs/probabilidad.png",
-                    title: "Estadística y probabilidad",
+                    title: "Probabilidad",
                     color: Colors.lightBlue,
                     routeName: ""),
                 const SizedBox(
@@ -61,7 +61,7 @@ class ThirdElementaryScreen extends StatelessWidget {
                 ),
                 ScholarshipCard(
                     imageUrl: "assets/imgs/plano.png",
-                    title: "Plano de Coordenadas",
+                    title: "Plano Cartesiano",
                     color: Colors.purple,
                     routeName: ""),
                 const SizedBox(

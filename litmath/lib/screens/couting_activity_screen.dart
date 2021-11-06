@@ -65,7 +65,6 @@ class _CountingActivtyScreenState extends State<CountingActivtyScreen> {
                     margin: const EdgeInsets.all(10),
                     child: ElevatedButton(
                       onPressed: () {
-                        print(rounds);
                         rounds += 1;
                         if (rounds == 5) {
                           showDialog(

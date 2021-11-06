@@ -53,7 +53,7 @@ class SecondElementaryScreen extends StatelessWidget {
                 ),
                 ScholarshipCard(
                     imageUrl: "assets/imgs/tridimensional.png",
-                    title: "Figuras tridimensionales",
+                    title: "Figuras",
                     color: Colors.lightBlue,
                     routeName: ""),
                 const SizedBox(

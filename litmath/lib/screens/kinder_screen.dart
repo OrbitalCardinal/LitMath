@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/screens/couting_activity_screen.dart';
+import 'package:litmath/screens/patterns_screen.dart';
+import 'package:litmath/screens/sum_screen.dart';
 import 'package:litmath/widgets/scholarship_card.dart';
 import 'drag_and_drop_screen.dart';
+
 class KinderScreen extends StatelessWidget {
   const KinderScreen({Key? key}) : super(key: key);
   static const routeName = "/kinderScreen";
@@ -20,7 +24,7 @@ class KinderScreen extends StatelessWidget {
                 imageUrl: "assets/imgs/conteo.png",
                 title: "Conteo",
                 color: Colors.grey,
-                routeName: ""),
+                routeName: CountingActivtyScreen.routeName),
             const SizedBox(
               height: 50,
             ),
@@ -28,7 +32,7 @@ class KinderScreen extends StatelessWidget {
                 imageUrl: "assets/imgs/patrones.png",
                 title: "Patrones",
                 color: Colors.lightBlue,
-                routeName: DragAndDropScreen.routeName),
+                routeName: PatternsScreen.routeName),
             const SizedBox(
               height: 50,
             ),
@@ -36,7 +40,7 @@ class KinderScreen extends StatelessWidget {
                 imageUrl: "assets/imgs/suma.png",
                 title: "Sumas",
                 color: Colors.orange,
-                routeName: ""),
+                routeName: SumScreen.routeName),
             const SizedBox(
               height: 50,
             ),
@@ -47,9 +51,7 @@ class KinderScreen extends StatelessWidget {
                 routeName: ""),
             const SizedBox(
               height: 50,
-              
             ),
-            
           ],
         ),
       ),
