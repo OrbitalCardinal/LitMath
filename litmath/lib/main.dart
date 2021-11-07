@@ -4,6 +4,7 @@ import 'package:litmath/screens/first_elementary_screen.dart';
 import 'package:litmath/screens/patterns_screen.dart';
 import 'package:litmath/screens/second_elementary_screen.dart';
 import 'package:litmath/screens/sum_screen.dart';
+import 'package:litmath/screens/substraction_screen.dart';
 import 'package:litmath/screens/third_elementary_screen.dart';
 import 'package:litmath/screens/first_screen.dart';
 import 'package:litmath/screens/kinder_screen.dart';
@@ -56,7 +57,8 @@ class MyApp extends StatelessWidget {
         DragAndDropScreen.routeName: (ctx) => const DragAndDropScreen(),
         CountingActivtyScreen.routeName: (ctx) => const CountingActivtyScreen(),
         PatternsScreen.routeName: (ctx) => const PatternsScreen(),
-        SumScreen.routeName: (ctx) => const SumScreen()
+        SumScreen.routeName: (ctx) => const SumScreen(),
+        SubstractionScreen.routeName: (ctx) => const SubstractionScreen()
       },
     );
   }
