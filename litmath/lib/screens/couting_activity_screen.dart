@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 import 'package:litmath/screens/kinder_screen.dart';
+import 'package:litmath/screens/selection_screen.dart';
 
 class CountingActivtyScreen extends StatefulWidget {
   const CountingActivtyScreen({Key? key}) : super(key: key);
@@ -77,8 +78,9 @@ class _CountingActivtyScreenState extends State<CountingActivtyScreen> {
                                     TextButton(
                                         onPressed: () {
                                           Navigator.of(context)
-                                              .pushReplacementNamed(
-                                                  KinderScreen.routeName);
+                                              .pushNamedAndRemoveUntil(
+                                                  SelectionScreen.routeName,
+                                                  (route) => false);
                                         },
                                         child: const Text("Continuar")),
                                   ],

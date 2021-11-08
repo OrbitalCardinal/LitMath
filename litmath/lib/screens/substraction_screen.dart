@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 import 'package:litmath/screens/kinder_screen.dart';
+import 'package:litmath/screens/selection_screen.dart';
+import 'package:litmath/widgets/finished_activity_dialog.dart';
 
 class SubstractionScreen extends StatefulWidget {
   const SubstractionScreen({Key? key}) : super(key: key);
@@ -21,7 +23,7 @@ class _SubstractionScreenState extends State<SubstractionScreen> {
   int randInt = 0;
   @override
   Widget build(BuildContext context) {
-    int range = 20;
+    int range = 10;
     int firstNumber = rand.nextInt(range);
     int secondNumber = rand.nextInt(range);
     int result = firstNumber - secondNumber;
@@ -34,9 +36,9 @@ class _SubstractionScreenState extends State<SubstractionScreen> {
 
     List<int> options = [
       result,
-      rand.nextInt(range)+randInt,
-      rand.nextInt(range)+randInt,
-      rand.nextInt(range)+randInt
+      rand.nextInt(range) + randInt,
+      rand.nextInt(range) + randInt,
+      rand.nextInt(range) + randInt
     ];
 
     options.shuffle();
@@ -50,7 +52,7 @@ class _SubstractionScreenState extends State<SubstractionScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Realiza la siguiente operación: "),
+            const Text("Realiza la siguiente operación: "),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -117,27 +119,6 @@ class _SubstractionScreenState extends State<SubstractionScreen> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class FinishedActivityDialog extends StatelessWidget {
-  const FinishedActivityDialog({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      content: const Text("La actividad a finalizado"),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pushReplacementNamed(KinderScreen.routeName);
-          },
-          child: const Text("Ok"),
-        )
-      ],
     );
   }
 }

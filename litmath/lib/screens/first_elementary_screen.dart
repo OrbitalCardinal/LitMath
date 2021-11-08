@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/screens/first_elementary_activities/first_elementary_compare.dart';
+import 'package:litmath/screens/first_elementary_activities/first_elementary_fractions.dart';
+import 'package:litmath/screens/first_elementary_activities/first_elementary_substraction.dart';
+import 'package:litmath/screens/first_elementary_activities/first_elementary_sums.dart';
 import 'package:litmath/widgets/scholarship_card.dart';
 
 class FirstElementaryScreen extends StatelessWidget {
@@ -20,7 +24,7 @@ class FirstElementaryScreen extends StatelessWidget {
                 imageUrl: "assets/imgs/suma.png",
                 title: "Sumas",
                 color: Colors.orange,
-                routeName: ""),
+                routeName: FirstElementarySums.routeName),
             const SizedBox(
               height: 50,
             ),
@@ -28,7 +32,7 @@ class FirstElementaryScreen extends StatelessWidget {
                 imageUrl: "assets/imgs/resta.png",
                 title: "Restas",
                 color: Colors.red,
-                routeName: ""),
+                routeName: FirstElementarySubstraction.routeName),
             const SizedBox(
               height: 50,
             ),
@@ -52,7 +56,7 @@ class FirstElementaryScreen extends StatelessWidget {
                 imageUrl: "assets/imgs/comparacion.png",
                 title: "Comparación",
                 color: Colors.lightBlue,
-                routeName: ""),
+                routeName: FirstElementaryCompare.routeName),
             const SizedBox(
               height: 50,
             ),
@@ -60,7 +64,7 @@ class FirstElementaryScreen extends StatelessWidget {
                 imageUrl: "assets/imgs/fracciones.png",
                 title: "Fracciones",
                 color: Colors.purple,
-                routeName: ""),
+                routeName: FirstElementaryFractions.routeName),
             const SizedBox(
               height: 50,
             ),

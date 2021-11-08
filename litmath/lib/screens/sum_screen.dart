@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 import 'package:litmath/screens/kinder_screen.dart';
+import 'package:litmath/screens/selection_screen.dart';
+import 'package:litmath/widgets/finished_activity_dialog.dart';
 
 class SumScreen extends StatefulWidget {
   const SumScreen({Key? key}) : super(key: key);
@@ -19,7 +21,7 @@ class _SumScreenState extends State<SumScreen> {
 
   @override
   Widget build(BuildContext context) {
-    int range = 20;
+    int range = 10;
     int firstNumber = rand.nextInt(range);
     int secondNumber = rand.nextInt(range);
     int result = firstNumber + secondNumber;
@@ -109,27 +111,6 @@ class _SumScreenState extends State<SumScreen> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class FinishedActivityDialog extends StatelessWidget {
-  const FinishedActivityDialog({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      content: const Text("La actividad a finalizado"),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pushReplacementNamed(KinderScreen.routeName);
-          },
-          child: const Text("Ok"),
-        )
-      ],
     );
   }
 }

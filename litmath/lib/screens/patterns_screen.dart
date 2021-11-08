@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:litmath/screens/kinder_screen.dart';
+import 'package:litmath/screens/selection_screen.dart';
 
 class PatternsScreen extends StatefulWidget {
   const PatternsScreen({Key? key}) : super(key: key);
@@ -93,8 +94,10 @@ class _PatternsScreenState extends State<PatternsScreen> {
                               actions: [
                                 TextButton(
                                   onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed(
-                                        KinderScreen.routeName);
+                                    Navigator.of(context)
+                                        .pushNamedAndRemoveUntil(
+                                            SelectionScreen.routeName,
+                                            (route) => false);
                                   },
                                   child: const Text("Ok"),
                                 )

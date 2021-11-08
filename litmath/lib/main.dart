@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:litmath/screens/couting_activity_screen.dart';
+import 'package:litmath/screens/first_elementary_activities/first_elementary_compare.dart';
+import 'package:litmath/screens/first_elementary_activities/first_elementary_fractions.dart';
+import 'package:litmath/screens/first_elementary_activities/first_elementary_substraction.dart';
+import 'package:litmath/screens/first_elementary_activities/first_elementary_sums.dart';
 import 'package:litmath/screens/first_elementary_screen.dart';
 import 'package:litmath/screens/patterns_screen.dart';
 import 'package:litmath/screens/second_elementary_screen.dart';
@@ -58,7 +62,14 @@ class MyApp extends StatelessWidget {
         CountingActivtyScreen.routeName: (ctx) => const CountingActivtyScreen(),
         PatternsScreen.routeName: (ctx) => const PatternsScreen(),
         SumScreen.routeName: (ctx) => const SumScreen(),
-        SubstractionScreen.routeName: (ctx) => const SubstractionScreen()
+        SubstractionScreen.routeName: (ctx) => const SubstractionScreen(),
+        FirstElementarySums.routeName: (ctx) => const FirstElementarySums(),
+        FirstElementarySubstraction.routeName: (ctx) =>
+            const FirstElementarySubstraction(),
+        FirstElementaryCompare.routeName: (ctx) =>
+            const FirstElementaryCompare(),
+        FirstElementaryFractions.routeName: (ctx) =>
+            const FirstElementaryFractions()
       },
     );
   }
