@@ -1,43 +1,37 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:litmath/screens/activities_selection_screens/kinder_screen.dart';
+import 'package:litmath/screens/selection_screen.dart';
 import 'package:litmath/widgets/finished_activity_dialog.dart';
 
-class FirstElementarySubstraction extends StatefulWidget {
-  const FirstElementarySubstraction({Key? key}) : super(key: key);
-  static const routeName = "/FirstElementarySubstraction";
+class SumScreen extends StatefulWidget {
+  const SumScreen({Key? key}) : super(key: key);
+  static const routeName = "/sumscreen";
 
   @override
-  _FirstElementarySubstractionState createState() =>
-      _FirstElementarySubstractionState();
+  _SumScreenState createState() => _SumScreenState();
 }
 
-class _FirstElementarySubstractionState
-    extends State<FirstElementarySubstraction> {
+class _SumScreenState extends State<SumScreen> {
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
   int totalRounds = 9;
   int rounds = 0;
   int score = 0;
-  int randInt = 0;
+
   @override
   Widget build(BuildContext context) {
-    int range = 20;
+    int range = 10;
     int firstNumber = rand.nextInt(range);
     int secondNumber = rand.nextInt(range);
-    int result = firstNumber - secondNumber;
-    int randInt = rand.nextInt(5);
-    while (result < 0) {
-      firstNumber = rand.nextInt(range);
-      secondNumber = rand.nextInt(range);
-      result = firstNumber - secondNumber;
-    }
+    int result = firstNumber + secondNumber;
 
     List<int> options = [
       result,
-      rand.nextInt(range) + randInt,
-      rand.nextInt(range) + randInt,
-      rand.nextInt(range) + randInt
+      rand.nextInt(range),
+      rand.nextInt(range),
+      rand.nextInt(range)
     ];
 
     options.shuffle();
@@ -54,7 +48,7 @@ class _FirstElementarySubstractionState
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Realiza la siguiente operación: "),
+            Text("Realiza la siguiente operación: "),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -63,7 +57,7 @@ class _FirstElementarySubstractionState
                   style: promptStyle,
                 ),
                 Text(
-                  "-",
+                  "+",
                   style: promptStyle,
                 ),
                 Text(

@@ -1,19 +1,21 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:litmath/screens/activities_selection_screens/kinder_screen.dart';
+import 'package:litmath/screens/selection_screen.dart';
 import 'package:litmath/widgets/finished_activity_dialog.dart';
 
-class FirstElementarySubstraction extends StatefulWidget {
-  const FirstElementarySubstraction({Key? key}) : super(key: key);
-  static const routeName = "/FirstElementarySubstraction";
+class SubstractionScreen extends StatefulWidget {
+  const SubstractionScreen({Key? key}) : super(key: key);
+  static const routeName = "/subsctractionscreen";
 
   @override
-  _FirstElementarySubstractionState createState() =>
-      _FirstElementarySubstractionState();
+  _SubstractionScreenState createState() => _SubstractionScreenState();
 }
 
-class _FirstElementarySubstractionState
-    extends State<FirstElementarySubstraction> {
+class _SubstractionScreenState extends State<SubstractionScreen> {
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
   int totalRounds = 9;
@@ -22,7 +24,7 @@ class _FirstElementarySubstractionState
   int randInt = 0;
   @override
   Widget build(BuildContext context) {
-    int range = 20;
+    int range = 10;
     int firstNumber = rand.nextInt(range);
     int secondNumber = rand.nextInt(range);
     int result = firstNumber - secondNumber;

@@ -3,41 +3,32 @@ import 'dart:math';
 
 import 'package:litmath/widgets/finished_activity_dialog.dart';
 
-class FirstElementarySubstraction extends StatefulWidget {
-  const FirstElementarySubstraction({Key? key}) : super(key: key);
-  static const routeName = "/FirstElementarySubstraction";
+class SecondElementaryDivide extends StatefulWidget {
+  const SecondElementaryDivide({Key? key}) : super(key: key);
+  static const routeName = "/SecondElementaryDivide";
 
   @override
-  _FirstElementarySubstractionState createState() =>
-      _FirstElementarySubstractionState();
+  _SecondElementaryDivideState createState() => _SecondElementaryDivideState();
 }
 
-class _FirstElementarySubstractionState
-    extends State<FirstElementarySubstraction> {
+class _SecondElementaryDivideState extends State<SecondElementaryDivide> {
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
   int totalRounds = 9;
   int rounds = 0;
   int score = 0;
-  int randInt = 0;
   @override
   Widget build(BuildContext context) {
-    int range = 20;
-    int firstNumber = rand.nextInt(range);
+    int range = 15;
+    int firstNumber = rand.nextInt(15 - 1) + 1;
     int secondNumber = rand.nextInt(range);
-    int result = firstNumber - secondNumber;
-    int randInt = rand.nextInt(5);
-    while (result < 0) {
-      firstNumber = rand.nextInt(range);
-      secondNumber = rand.nextInt(range);
-      result = firstNumber - secondNumber;
-    }
+    double result = firstNumber / secondNumber;
 
-    List<int> options = [
+    List<double> options = [
       result,
-      rand.nextInt(range) + randInt,
-      rand.nextInt(range) + randInt,
-      rand.nextInt(range) + randInt
+      rand.nextInt(range) / firstNumber,
+      rand.nextInt(range) / firstNumber,
+      rand.nextInt(range) / firstNumber
     ];
 
     options.shuffle();
@@ -49,7 +40,7 @@ class _FirstElementarySubstractionState
             " de " +
             (totalRounds + 1).toString()),
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -63,7 +54,7 @@ class _FirstElementarySubstractionState
                   style: promptStyle,
                 ),
                 Text(
-                  "-",
+                  "/",
                   style: promptStyle,
                 ),
                 Text(
@@ -112,7 +103,7 @@ class _FirstElementarySubstractionState
                           child: Container(
                             padding: const EdgeInsets.all(20),
                             child: Text(
-                              option.toString(),
+                              option.toStringAsFixed(2),
                             ),
                           ),
                         ),

@@ -1,8 +1,9 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:litmath/screens/kinder_screen.dart';
+import 'package:litmath/screens/activities_selection_screens/kinder_screen.dart';
 import 'package:litmath/screens/selection_screen.dart';
+import 'package:litmath/widgets/finished_activity_dialog.dart';
 
 class PatternsScreen extends StatefulWidget {
   const PatternsScreen({Key? key}) : super(key: key);
@@ -47,7 +48,8 @@ class _PatternsScreenState extends State<PatternsScreen> {
 
   int exercise = 0;
   int score = 0;
-  int round = 0;
+  int totalRounds = 4;
+  int rounds = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,10 @@ class _PatternsScreenState extends State<PatternsScreen> {
     shuffleOptions.shuffle();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Patrones"),
+        title: Text("Ronda " +
+            (rounds + 1).toString() +
+            " de " +
+            (totalRounds + 1).toString()),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -85,28 +90,18 @@ class _PatternsScreenState extends State<PatternsScreen> {
                         score += 1;
                       });
                     }
-                    if (round == 4) {
+                    if (rounds == totalRounds) {
                       showDialog(
                           context: context,
                           builder: (context) {
-                            return AlertDialog(
-                              content: const Text("La actividad a finalizado"),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context)
-                                        .pushNamedAndRemoveUntil(
-                                            SelectionScreen.routeName,
-                                            (route) => false);
-                                  },
-                                  child: const Text("Ok"),
-                                )
-                              ],
+                            return FinishedActivityDialog(
+                              score: score,
+                              totalRounds: totalRounds,
                             );
                           });
                     } else {
                       setState(() {
-                        round += 1;
+                        rounds += 1;
                         exercise += 1;
                       });
                     }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:litmath/screens/couting_activity_screen.dart';
-import 'package:litmath/screens/patterns_screen.dart';
-import 'package:litmath/screens/substraction_screen.dart';
-import 'package:litmath/screens/sum_screen.dart';
+import 'package:litmath/screens/kinder_acitivities/couting_activity_screen.dart';
+import 'package:litmath/screens/kinder_acitivities/patterns_screen.dart';
+import 'package:litmath/screens/kinder_acitivities/substraction_screen.dart';
+import 'package:litmath/screens/kinder_acitivities/sum_screen.dart';
 import 'package:litmath/widgets/scholarship_card.dart';
-import 'drag_and_drop_screen.dart';
+import '../drag_and_drop_screen.dart';
 
 class KinderScreen extends StatelessWidget {
   const KinderScreen({Key? key}) : super(key: key);

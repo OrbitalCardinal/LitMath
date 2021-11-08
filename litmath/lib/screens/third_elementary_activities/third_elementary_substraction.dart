@@ -1,50 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/widgets/finished_activity_dialog.dart';
 import 'dart:math';
 
-import 'package:litmath/screens/kinder_screen.dart';
-import 'package:litmath/screens/selection_screen.dart';
-import 'package:litmath/widgets/finished_activity_dialog.dart';
-
-class SumScreen extends StatefulWidget {
-  const SumScreen({Key? key}) : super(key: key);
-  static const routeName = "/sumscreen";
+class ThirdElementarySubstraction extends StatefulWidget {
+  const ThirdElementarySubstraction({Key? key}) : super(key: key);
+  static const routeName = "/ThirdElementarySubstraction";
 
   @override
-  _SumScreenState createState() => _SumScreenState();
+  _ThirdElementarySubstractionState createState() =>
+      _ThirdElementarySubstractionState();
 }
 
-class _SumScreenState extends State<SumScreen> {
+class _ThirdElementarySubstractionState
+    extends State<ThirdElementarySubstraction> {
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
+  int totalRounds = 9;
   int rounds = 0;
   int score = 0;
-
+  int randInt = 0;
   @override
   Widget build(BuildContext context) {
-    int range = 10;
+    int range = 50;
     int firstNumber = rand.nextInt(range);
     int secondNumber = rand.nextInt(range);
-    int result = firstNumber + secondNumber;
+    int result = firstNumber - secondNumber;
+    int randInt = rand.nextInt(5);
 
     List<int> options = [
       result,
-      rand.nextInt(range),
-      rand.nextInt(range),
-      rand.nextInt(range)
+      rand.nextInt(range) + randInt,
+      rand.nextInt(range) + randInt,
+      rand.nextInt(range) + randInt
     ];
 
     options.shuffle();
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Sumas"),
+        title: Text("Ronda " +
+            (rounds + 1).toString() +
+            " de " +
+            (totalRounds + 1).toString()),
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Realiza la siguiente operación: "),
+            const Text("Realiza la siguiente operación: "),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -53,7 +57,7 @@ class _SumScreenState extends State<SumScreen> {
                   style: promptStyle,
                 ),
                 Text(
-                  "+",
+                  "-",
                   style: promptStyle,
                 ),
                 Text(
@@ -83,7 +87,7 @@ class _SumScreenState extends State<SumScreen> {
                               score += 1;
                               print(score);
                             }
-                            if (rounds != 9) {
+                            if (rounds != totalRounds) {
                               setState(() {
                                 rounds += 1;
                               });
@@ -91,7 +95,10 @@ class _SumScreenState extends State<SumScreen> {
                               showDialog(
                                 context: context,
                                 builder: (context) {
-                                  return const FinishedActivityDialog();
+                                  return FinishedActivityDialog(
+                                    score: score,
+                                    totalRounds: totalRounds,
+                                  );
                                 },
                               );
                             }

@@ -1,43 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/widgets/finished_activity_dialog.dart';
 import 'dart:math';
 
-import 'package:litmath/widgets/finished_activity_dialog.dart';
-
-class FirstElementarySubstraction extends StatefulWidget {
-  const FirstElementarySubstraction({Key? key}) : super(key: key);
-  static const routeName = "/FirstElementarySubstraction";
+class ThirdElementaryMultiplication extends StatefulWidget {
+  const ThirdElementaryMultiplication({Key? key}) : super(key: key);
+  static const routeName = "/ThirdElementaryMultiplication";
 
   @override
-  _FirstElementarySubstractionState createState() =>
-      _FirstElementarySubstractionState();
+  _ThirdElementaryMultiplicationState createState() =>
+      _ThirdElementaryMultiplicationState();
 }
 
-class _FirstElementarySubstractionState
-    extends State<FirstElementarySubstraction> {
+class _ThirdElementaryMultiplicationState
+    extends State<ThirdElementaryMultiplication> {
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
   int totalRounds = 9;
   int rounds = 0;
   int score = 0;
-  int randInt = 0;
   @override
   Widget build(BuildContext context) {
-    int range = 20;
+    int range = 50;
     int firstNumber = rand.nextInt(range);
     int secondNumber = rand.nextInt(range);
-    int result = firstNumber - secondNumber;
-    int randInt = rand.nextInt(5);
-    while (result < 0) {
-      firstNumber = rand.nextInt(range);
-      secondNumber = rand.nextInt(range);
-      result = firstNumber - secondNumber;
-    }
+    int result = firstNumber * secondNumber;
 
     List<int> options = [
       result,
-      rand.nextInt(range) + randInt,
-      rand.nextInt(range) + randInt,
-      rand.nextInt(range) + randInt
+      rand.nextInt(range) * firstNumber,
+      rand.nextInt(range) * firstNumber,
+      rand.nextInt(range) * firstNumber
     ];
 
     options.shuffle();
@@ -49,7 +41,7 @@ class _FirstElementarySubstractionState
             " de " +
             (totalRounds + 1).toString()),
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -63,7 +55,7 @@ class _FirstElementarySubstractionState
                   style: promptStyle,
                 ),
                 Text(
-                  "-",
+                  "x",
                   style: promptStyle,
                 ),
                 Text(

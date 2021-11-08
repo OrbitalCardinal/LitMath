@@ -1,53 +1,45 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:litmath/widgets/finished_activity_dialog.dart';
 import 'dart:math';
 
-import 'package:litmath/screens/kinder_screen.dart';
-import 'package:litmath/screens/selection_screen.dart';
-import 'package:litmath/widgets/finished_activity_dialog.dart';
-
-class SubstractionScreen extends StatefulWidget {
-  const SubstractionScreen({Key? key}) : super(key: key);
-  static const routeName = "/subsctractionscreen";
+class SecondElementarySums extends StatefulWidget {
+  const SecondElementarySums({Key? key}) : super(key: key);
+  static const routeName = "/SecondElementarySums";
 
   @override
-  _SubstractionScreenState createState() => _SubstractionScreenState();
+  _SecondElementarySumsState createState() => _SecondElementarySumsState();
 }
 
-class _SubstractionScreenState extends State<SubstractionScreen> {
+class _SecondElementarySumsState extends State<SecondElementarySums> {
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
+  int totalRounds = 9;
   int rounds = 0;
   int score = 0;
-  int randInt = 0;
   @override
   Widget build(BuildContext context) {
-    int range = 10;
+    int range = 50;
     int firstNumber = rand.nextInt(range);
     int secondNumber = rand.nextInt(range);
-    int result = firstNumber - secondNumber;
-    int randInt = rand.nextInt(5);
-    while (result < 0) {
-      firstNumber = rand.nextInt(range);
-      secondNumber = rand.nextInt(range);
-      result = firstNumber - secondNumber;
-    }
+    int result = firstNumber + secondNumber;
 
     List<int> options = [
       result,
-      rand.nextInt(range) + randInt,
-      rand.nextInt(range) + randInt,
-      rand.nextInt(range) + randInt
+      rand.nextInt(range),
+      rand.nextInt(range),
+      rand.nextInt(range)
     ];
 
     options.shuffle();
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Restas"),
+        title: Text("Ronda " +
+            (rounds + 1).toString() +
+            " de " +
+            (totalRounds + 1).toString()),
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -61,7 +53,7 @@ class _SubstractionScreenState extends State<SubstractionScreen> {
                   style: promptStyle,
                 ),
                 Text(
-                  "-",
+                  "+",
                   style: promptStyle,
                 ),
                 Text(
@@ -91,7 +83,7 @@ class _SubstractionScreenState extends State<SubstractionScreen> {
                               score += 1;
                               print(score);
                             }
-                            if (rounds != 9) {
+                            if (rounds != totalRounds) {
                               setState(() {
                                 rounds += 1;
                               });
@@ -99,7 +91,10 @@ class _SubstractionScreenState extends State<SubstractionScreen> {
                               showDialog(
                                 context: context,
                                 builder: (context) {
-                                  return const FinishedActivityDialog();
+                                  return FinishedActivityDialog(
+                                    score: score,
+                                    totalRounds: totalRounds,
+                                  );
                                 },
                               );
                             }

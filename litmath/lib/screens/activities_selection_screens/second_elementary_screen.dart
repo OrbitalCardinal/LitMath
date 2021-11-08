@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/screens/second_elementary_activities/second_elementary_divide.dart';
+import 'package:litmath/screens/second_elementary_activities/second_elementary_fractions.dart';
+import 'package:litmath/screens/second_elementary_activities/second_elementary_multiplication.dart';
+import 'package:litmath/screens/second_elementary_activities/second_elementary_shapes.dart';
+import 'package:litmath/screens/second_elementary_activities/second_elementary_substraction.dart';
+import 'package:litmath/screens/second_elementary_activities/second_elementary_sums.dart';
 import 'package:litmath/widgets/scholarship_card.dart';
 
 class SecondElementaryScreen extends StatelessWidget {
@@ -23,7 +29,7 @@ class SecondElementaryScreen extends StatelessWidget {
                     imageUrl: "assets/imgs/suma.png",
                     title: "Sumas",
                     color: Colors.orange,
-                    routeName: ""),
+                    routeName: SecondElementarySums.routeName),
                 const SizedBox(
                   height: 50,
                 ),
@@ -31,7 +37,7 @@ class SecondElementaryScreen extends StatelessWidget {
                     imageUrl: "assets/imgs/resta.png",
                     title: "Restas",
                     color: Colors.red,
-                    routeName: ""),
+                    routeName: SecondElementarySubstraction.routeName),
                 const SizedBox(
                   height: 50,
                 ),
@@ -39,7 +45,7 @@ class SecondElementaryScreen extends StatelessWidget {
                     imageUrl: "assets/imgs/multiplicacion.png",
                     title: "Multiplicación",
                     color: Colors.green,
-                    routeName: ""),
+                    routeName: SecondElementaryMultiplication.routeName),
                 const SizedBox(
                   height: 50,
                 ),
@@ -47,7 +53,7 @@ class SecondElementaryScreen extends StatelessWidget {
                     imageUrl: "assets/imgs/division.png",
                     title: "División",
                     color: Colors.pink,
-                    routeName: ""),
+                    routeName: SecondElementaryDivide.routeName),
                 const SizedBox(
                   height: 50,
                 ),
@@ -55,7 +61,7 @@ class SecondElementaryScreen extends StatelessWidget {
                     imageUrl: "assets/imgs/tridimensional.png",
                     title: "Figuras",
                     color: Colors.lightBlue,
-                    routeName: ""),
+                    routeName: SecondElementaryShapes.routeName),
                 const SizedBox(
                   height: 50,
                 ),
@@ -63,7 +69,7 @@ class SecondElementaryScreen extends StatelessWidget {
                     imageUrl: "assets/imgs/fracciones.png",
                     title: "Fracciones",
                     color: Colors.purple,
-                    routeName: ""),
+                    routeName: SecondElementaryFractions.routeName),
                 const SizedBox(
                   height: 50,
                 ),

@@ -13,6 +13,7 @@ class FirstElementaryCompare extends StatefulWidget {
 class _FirstElementaryCompareState extends State<FirstElementaryCompare> {
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
+  int totalRounds = 9;
   int rounds = 0;
   int score = 0;
 
@@ -34,7 +35,10 @@ class _FirstElementaryCompareState extends State<FirstElementaryCompare> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Comparacion"),
+        title: Text("Ronda " +
+            (rounds + 1).toString() +
+            " de " +
+            (totalRounds + 1).toString()),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -71,12 +75,16 @@ class _FirstElementaryCompareState extends State<FirstElementaryCompare> {
                                 score += 1;
                                 print(score);
                               }
-                              if (rounds == 5) {
+                              if (rounds == totalRounds) {
                                 showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return const FinishedActivityDialog();
-                                    });
+                                  context: context,
+                                  builder: (context) {
+                                    return FinishedActivityDialog(
+                                      score: score,
+                                      totalRounds: totalRounds,
+                                    );
+                                  },
+                                );
                               } else {
                                 setState(() {
                                   rounds += 1;

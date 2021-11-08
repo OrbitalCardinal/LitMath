@@ -15,6 +15,7 @@ class FirstElementaryFractions extends StatefulWidget {
 class _FirstElementaryFractionsState extends State<FirstElementaryFractions> {
   Random rand = Random();
   int score = 0;
+  int totalRounds = 9;
   int rounds = 0;
   @override
   Widget build(BuildContext context) {
@@ -30,9 +31,14 @@ class _FirstElementaryFractionsState extends State<FirstElementaryFractions> {
       "1 / " + (rand.nextInt(max - min) + min).toString(),
       "1 / " + (rand.nextInt(max - min) + min).toString()
     ];
+
+    options.shuffle();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Fracciones"),
+        title: Text("Ronda " +
+            (rounds + 1).toString() +
+            " de " +
+            (totalRounds + 1).toString()),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -67,7 +73,7 @@ class _FirstElementaryFractionsState extends State<FirstElementaryFractions> {
                           if (option == answer) {
                             score += 1;
                           }
-                          if (rounds != 9) {
+                          if (rounds != totalRounds) {
                             setState(() {
                               rounds += 1;
                             });
@@ -75,7 +81,10 @@ class _FirstElementaryFractionsState extends State<FirstElementaryFractions> {
                             showDialog(
                               context: context,
                               builder: (context) {
-                                return const FinishedActivityDialog();
+                                return FinishedActivityDialog(
+                                  score: score,
+                                  totalRounds: totalRounds,
+                                );
                               },
                             );
                           }

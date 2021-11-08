@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/widgets/finished_activity_dialog.dart';
 import 'dart:math';
 
-import 'package:litmath/widgets/finished_activity_dialog.dart';
-
-class FirstElementarySubstraction extends StatefulWidget {
-  const FirstElementarySubstraction({Key? key}) : super(key: key);
-  static const routeName = "/FirstElementarySubstraction";
+class SecondElementarySubstraction extends StatefulWidget {
+  const SecondElementarySubstraction({Key? key}) : super(key: key);
+  static const routeName = "/SecondElementarySubstraction";
 
   @override
-  _FirstElementarySubstractionState createState() =>
-      _FirstElementarySubstractionState();
+  _SecondElementarySubstractionState createState() =>
+      _SecondElementarySubstractionState();
 }
 
-class _FirstElementarySubstractionState
-    extends State<FirstElementarySubstraction> {
+class _SecondElementarySubstractionState
+    extends State<SecondElementarySubstraction> {
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
   int totalRounds = 9;
@@ -22,7 +21,7 @@ class _FirstElementarySubstractionState
   int randInt = 0;
   @override
   Widget build(BuildContext context) {
-    int range = 20;
+    int range = 40;
     int firstNumber = rand.nextInt(range);
     int secondNumber = rand.nextInt(range);
     int result = firstNumber - secondNumber;

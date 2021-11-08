@@ -14,6 +14,7 @@ class FirstElementarySums extends StatefulWidget {
 class _FirstElementarySumsState extends State<FirstElementarySums> {
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
+  int totalRounds = 9;
   int rounds = 0;
   int score = 0;
   @override
@@ -35,7 +36,10 @@ class _FirstElementarySumsState extends State<FirstElementarySums> {
 
       return Scaffold(
         appBar: AppBar(
-          title: const Text("Sumas"),
+          title: Text("Ronda " +
+              (rounds + 1).toString() +
+              " de " +
+              (totalRounds + 1).toString()),
         ),
         body: Container(
           width: double.infinity,
@@ -81,7 +85,7 @@ class _FirstElementarySumsState extends State<FirstElementarySums> {
                                 score += 1;
                                 print(score);
                               }
-                              if (rounds != 9) {
+                              if (rounds != totalRounds) {
                                 setState(() {
                                   rounds += 1;
                                 });
@@ -89,7 +93,10 @@ class _FirstElementarySumsState extends State<FirstElementarySums> {
                                 showDialog(
                                   context: context,
                                   builder: (context) {
-                                    return const FinishedActivityDialog();
+                                    return FinishedActivityDialog(
+                                      score: score,
+                                      totalRounds: totalRounds,
+                                    );
                                   },
                                 );
                               }

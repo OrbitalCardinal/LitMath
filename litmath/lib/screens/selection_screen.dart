@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:litmath/screens/first_elementary_screen.dart';
-import 'package:litmath/screens/second_elementary_screen.dart';
-import 'package:litmath/screens/third_elementary_screen.dart';
-import 'package:litmath/screens/kinder_screen.dart';
+import 'package:litmath/screens/activities_selection_screens/first_elementary_screen.dart';
+import 'package:litmath/screens/activities_selection_screens/second_elementary_screen.dart';
+import 'package:litmath/screens/activities_selection_screens/third_elementary_screen.dart';
+import 'package:litmath/screens/activities_selection_screens/kinder_screen.dart';
 import 'package:litmath/screens/middle_screen.dart';
 import 'package:litmath/screens/settings_screen.dart';
 import 'package:litmath/widgets/scholarship_card.dart';
@@ -28,11 +28,6 @@ class SelectionScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.primary,
                 )),
-            ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text("Perfil"),
-              onTap: () {},
-            ),
             ListTile(
               leading: const Icon(Icons.settings),
               title: const Text("Configuración"),

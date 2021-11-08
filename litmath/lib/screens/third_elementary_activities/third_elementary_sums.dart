@@ -1,43 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/widgets/finished_activity_dialog.dart';
 import 'dart:math';
 
-import 'package:litmath/widgets/finished_activity_dialog.dart';
-
-class FirstElementarySubstraction extends StatefulWidget {
-  const FirstElementarySubstraction({Key? key}) : super(key: key);
-  static const routeName = "/FirstElementarySubstraction";
+class ThirdElementarySums extends StatefulWidget {
+  const ThirdElementarySums({Key? key}) : super(key: key);
+  static const routeName = "/ThirdElementarySums";
 
   @override
-  _FirstElementarySubstractionState createState() =>
-      _FirstElementarySubstractionState();
+  _ThirdElementarySumsState createState() => _ThirdElementarySumsState();
 }
 
-class _FirstElementarySubstractionState
-    extends State<FirstElementarySubstraction> {
+class _ThirdElementarySumsState extends State<ThirdElementarySums> {
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
   int totalRounds = 9;
   int rounds = 0;
   int score = 0;
-  int randInt = 0;
   @override
   Widget build(BuildContext context) {
-    int range = 20;
+    int range = 200;
     int firstNumber = rand.nextInt(range);
     int secondNumber = rand.nextInt(range);
-    int result = firstNumber - secondNumber;
-    int randInt = rand.nextInt(5);
-    while (result < 0) {
-      firstNumber = rand.nextInt(range);
-      secondNumber = rand.nextInt(range);
-      result = firstNumber - secondNumber;
-    }
+    int result = firstNumber + secondNumber;
 
     List<int> options = [
       result,
-      rand.nextInt(range) + randInt,
-      rand.nextInt(range) + randInt,
-      rand.nextInt(range) + randInt
+      rand.nextInt(range),
+      rand.nextInt(range),
+      rand.nextInt(range)
     ];
 
     options.shuffle();
@@ -49,7 +39,7 @@ class _FirstElementarySubstractionState
             " de " +
             (totalRounds + 1).toString()),
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -63,7 +53,7 @@ class _FirstElementarySubstractionState
                   style: promptStyle,
                 ),
                 Text(
-                  "-",
+                  "+",
                   style: promptStyle,
                 ),
                 Text(

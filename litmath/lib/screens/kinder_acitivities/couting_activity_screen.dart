@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-import 'package:litmath/screens/kinder_screen.dart';
+import 'package:litmath/screens/activities_selection_screens/kinder_screen.dart';
 import 'package:litmath/screens/selection_screen.dart';
+import 'package:litmath/widgets/finished_activity_dialog.dart';
 
 class CountingActivtyScreen extends StatefulWidget {
   const CountingActivtyScreen({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class CountingActivtyScreen extends StatefulWidget {
 }
 
 class _CountingActivtyScreenState extends State<CountingActivtyScreen> {
+  int totalRounds = 3;
   int rounds = 0;
   int score = 0;
   @override
@@ -40,7 +42,10 @@ class _CountingActivtyScreenState extends State<CountingActivtyScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Conteo"),
+        title: Text("Ronda " +
+            (rounds + 1).toString() +
+            " de " +
+            (totalRounds + 1).toString()),
       ),
       body: Container(
         width: double.infinity,
@@ -49,7 +54,7 @@ class _CountingActivtyScreenState extends State<CountingActivtyScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("¿Cuantas focas hay?"),
+            const Text("¿Cuantas personajes hay?"),
             const SizedBox(
               height: 50,
             ),
@@ -66,37 +71,23 @@ class _CountingActivtyScreenState extends State<CountingActivtyScreen> {
                     margin: const EdgeInsets.all(10),
                     child: ElevatedButton(
                       onPressed: () {
-                        rounds += 1;
-                        if (rounds == 5) {
+                        if (answer == n) {
+                          score += 1;
+                        }
+
+                        if (rounds != totalRounds) {
+                          setState(() {
+                            rounds += 1;
+                          });
+                        } else {
                           showDialog(
                               context: context,
                               builder: (context) {
-                                return AlertDialog(
-                                  content:
-                                      const Text("La actividad ha terminado!"),
-                                  actions: [
-                                    TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context)
-                                              .pushNamedAndRemoveUntil(
-                                                  SelectionScreen.routeName,
-                                                  (route) => false);
-                                        },
-                                        child: const Text("Continuar")),
-                                  ],
+                                return FinishedActivityDialog(
+                                  score: score,
+                                  totalRounds: totalRounds,
                                 );
                               });
-                        } else {
-                          if (answer == n) {
-                            setState(() {
-                              score += 1;
-                              n = random.nextInt(10);
-                            });
-                          } else {
-                            setState(() {
-                              n = random.nextInt(10);
-                            });
-                          }
                         }
                       },
                       child: Text(answer.toString()),

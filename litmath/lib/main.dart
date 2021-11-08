@@ -1,26 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:litmath/screens/couting_activity_screen.dart';
+import 'package:litmath/screens/kinder_acitivities/couting_activity_screen.dart';
 import 'package:litmath/screens/first_elementary_activities/first_elementary_compare.dart';
 import 'package:litmath/screens/first_elementary_activities/first_elementary_fractions.dart';
 import 'package:litmath/screens/first_elementary_activities/first_elementary_substraction.dart';
 import 'package:litmath/screens/first_elementary_activities/first_elementary_sums.dart';
-import 'package:litmath/screens/first_elementary_screen.dart';
-import 'package:litmath/screens/patterns_screen.dart';
-import 'package:litmath/screens/second_elementary_screen.dart';
-import 'package:litmath/screens/sum_screen.dart';
-import 'package:litmath/screens/substraction_screen.dart';
-import 'package:litmath/screens/third_elementary_screen.dart';
+import 'package:litmath/screens/activities_selection_screens/first_elementary_screen.dart';
+import 'package:litmath/screens/kinder_acitivities/patterns_screen.dart';
+import 'package:litmath/screens/second_elementary_activities/second_elementary_divide.dart';
+import 'package:litmath/screens/second_elementary_activities/second_elementary_multiplication.dart';
+import 'package:litmath/screens/second_elementary_activities/second_elementary_shapes.dart';
+import 'package:litmath/screens/second_elementary_activities/second_elementary_substraction.dart';
+import 'package:litmath/screens/second_elementary_activities/second_elementary_sums.dart';
+import 'package:litmath/screens/activities_selection_screens/second_elementary_screen.dart';
+import 'package:litmath/screens/kinder_acitivities/sum_screen.dart';
+import 'package:litmath/screens/kinder_acitivities/substraction_screen.dart';
+import 'package:litmath/screens/third_elementary_activities/third_elementary_divide.dart';
+import 'package:litmath/screens/second_elementary_activities/second_elementary_fractions.dart';
+import 'package:litmath/screens/third_elementary_activities/third_elementary_multiplication.dart';
+import 'package:litmath/screens/third_elementary_activities/third_elementary_plane.dart';
+import 'package:litmath/screens/third_elementary_activities/third_elementary_substraction.dart';
+import 'package:litmath/screens/third_elementary_activities/third_elementary_sums.dart';
+import 'package:litmath/screens/activities_selection_screens/third_elementary_screen.dart';
 import 'package:litmath/screens/first_screen.dart';
-import 'package:litmath/screens/kinder_screen.dart';
+import 'package:litmath/screens/activities_selection_screens/kinder_screen.dart';
 import 'package:litmath/screens/middle_screen.dart';
-import 'package:litmath/screens/new_login_screen.dart';
-import 'package:litmath/screens/new_signup_screen.dart';
+import 'package:litmath/screens/auth_screens/new_login_screen.dart';
+import 'package:litmath/screens/auth_screens/new_signup_screen.dart';
 import 'package:litmath/screens/second_screen.dart';
 import 'package:litmath/screens/login_screen.dart';
 import 'package:litmath/screens/selection_screen.dart';
 import 'package:litmath/screens/settings_screen.dart';
 import 'package:litmath/screens/signup_screen.dart';
-import 'package:litmath/screens/slide_show_screen.dart';
+import 'package:litmath/screens/slides_screens/slide_show_screen.dart';
 import 'package:litmath/screens/drag_and_drop_screen.dart';
 
 void main() {
@@ -69,7 +80,25 @@ class MyApp extends StatelessWidget {
         FirstElementaryCompare.routeName: (ctx) =>
             const FirstElementaryCompare(),
         FirstElementaryFractions.routeName: (ctx) =>
-            const FirstElementaryFractions()
+            const FirstElementaryFractions(),
+        SecondElementarySums.routeName: (ctx) => const SecondElementarySums(),
+        SecondElementarySubstraction.routeName: (ctx) =>
+            const SecondElementarySubstraction(),
+        SecondElementaryMultiplication.routeName: (ctx) =>
+            const SecondElementaryMultiplication(),
+        SecondElementaryDivide.routeName: (ctx) =>
+            const SecondElementaryDivide(),
+        SecondElementaryShapes.routeName: (ctx) =>
+            const SecondElementaryShapes(),
+        ThirdElementarySums.routeName: (ctx) => const ThirdElementarySums(),
+        ThirdElementarySubstraction.routeName: (ctx) =>
+            const ThirdElementarySubstraction(),
+        ThirdElementaryMultiplication.routeName: (ctx) =>
+            const ThirdElementaryMultiplication(),
+        ThirdElementaryDivide.routeName: (ctx) => const ThirdElementaryDivide(),
+        SecondElementaryFractions.routeName: (ctx) =>
+            const SecondElementaryFractions(),
+        ThirdElementaryPlane.routeName: (ctx) => const ThirdElementaryPlane()
       },
     );
   }
