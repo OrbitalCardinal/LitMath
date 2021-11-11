@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/providers/user_provider.dart';
 import 'dart:math';
 
 import 'package:litmath/widgets/finished_activity_dialog.dart';
@@ -12,6 +13,7 @@ class FirstElementarySums extends StatefulWidget {
 }
 
 class _FirstElementarySumsState extends State<FirstElementarySums> {
+  String activity_name = 'Sumas 1° Primaria';
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
   int totalRounds = 9;
@@ -99,6 +101,8 @@ class _FirstElementarySumsState extends State<FirstElementarySums> {
                                     );
                                   },
                                 );
+                                rounds+=1;
+                                UserProvider().sendReport(activity_name, score.toString(), rounds.toString());
                               }
                             },
                             child: Container(

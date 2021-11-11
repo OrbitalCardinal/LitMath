@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/providers/user_provider.dart';
 import 'package:litmath/widgets/finished_activity_dialog.dart';
 import 'dart:math';
 
@@ -13,6 +14,7 @@ class ThirdElementaryMultiplication extends StatefulWidget {
 
 class _ThirdElementaryMultiplicationState
     extends State<ThirdElementaryMultiplication> {
+      String activity_name = 'Multiplicación 3° Primaria';
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
   int totalRounds = 9;
@@ -99,6 +101,8 @@ class _ThirdElementaryMultiplicationState
                                   );
                                 },
                               );
+                              rounds+=1;
+                                UserProvider().sendReport(activity_name, score.toString(), rounds.toString());
                             }
                           },
                           child: Container(

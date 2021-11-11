@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:litmath/providers/user_provider.dart';
 import 'package:litmath/widgets/finished_activity_dialog.dart';
 
 class FirstElementaryFractions extends StatefulWidget {
@@ -13,6 +14,7 @@ class FirstElementaryFractions extends StatefulWidget {
 }
 
 class _FirstElementaryFractionsState extends State<FirstElementaryFractions> {
+  String activity_name = 'Fracciones';
   Random rand = Random();
   int score = 0;
   int totalRounds = 9;
@@ -87,6 +89,8 @@ class _FirstElementaryFractionsState extends State<FirstElementaryFractions> {
                                 );
                               },
                             );
+                            rounds+=1;
+                            UserProvider().sendReport(activity_name, score.toString(), rounds.toString());
                           }
                         },
                         child: Container(

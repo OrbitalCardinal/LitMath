@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:litmath/providers/user_provider.dart';
 import 'package:litmath/widgets/finished_activity_dialog.dart';
 import 'dart:math';
 
@@ -12,6 +13,7 @@ class ThirdElementaryPlane extends StatefulWidget {
 }
 
 class _ThirdElementaryPlaneState extends State<ThirdElementaryPlane> {
+  String activity_name = 'Plano Cartesiano';
   Random rand = Random();
   int score = 0;
   int totalRounds = 9;
@@ -89,6 +91,8 @@ class _ThirdElementaryPlaneState extends State<ThirdElementaryPlane> {
                                 );
                               },
                             );
+                            rounds+=1;
+                                UserProvider().sendReport(activity_name, score.toString(), rounds.toString());
                           }
                         },
                         child: Container(

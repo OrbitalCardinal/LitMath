@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/providers/user_provider.dart';
 import 'dart:math';
 
 import 'package:litmath/widgets/finished_activity_dialog.dart';
@@ -12,6 +13,7 @@ class SecondElementaryDivide extends StatefulWidget {
 }
 
 class _SecondElementaryDivideState extends State<SecondElementaryDivide> {
+  String activity_name = 'Division';
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
   int totalRounds = 9;
@@ -96,8 +98,11 @@ class _SecondElementaryDivideState extends State<SecondElementaryDivide> {
                                     score: score,
                                     totalRounds: totalRounds,
                                   );
+                                  
                                 },
                               );
+                              rounds+=1;
+                              UserProvider().sendReport(activity_name, score.toString(), rounds.toString());
                             }
                           },
                           child: Container(

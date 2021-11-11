@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tex/flutter_tex.dart';
+import 'package:litmath/providers/user_provider.dart';
 import 'package:litmath/widgets/finished_activity_dialog.dart';
 import 'dart:math';
 
@@ -13,6 +14,7 @@ class SecondElementaryFractions extends StatefulWidget {
 }
 
 class _SecondElementaryFractionsState extends State<SecondElementaryFractions> {
+  String activity_name = 'Fracciones 2° Primaria';
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
   int totalRounds = 9;
@@ -126,6 +128,8 @@ class _SecondElementaryFractionsState extends State<SecondElementaryFractions> {
                                       );
                                     },
                                   );
+                                  rounds+=1;
+                                UserProvider().sendReport(activity_name, score.toString(), rounds.toString());
                                 }
                               },
                               child: Container(

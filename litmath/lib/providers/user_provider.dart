@@ -193,4 +193,9 @@ class UserProvider {
     UserProvider().sendEmail(name: prefs.getString('name'), email: prefs.getString('email'), activity_score: activity_score, activity_total: activity_total,activity_name: activity_name);
   }
 
+  Future <void> clearSharedPreferences() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+  }
+
 }

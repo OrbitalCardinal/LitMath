@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/providers/user_provider.dart';
 import 'dart:math';
 
 import 'package:litmath/widgets/finished_activity_dialog.dart';
@@ -14,6 +15,7 @@ class FirstElementarySubstraction extends StatefulWidget {
 
 class _FirstElementarySubstractionState
     extends State<FirstElementarySubstraction> {
+  String activity_name = 'Restas 1° Primaria';
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
   int totalRounds = 9;
@@ -107,6 +109,8 @@ class _FirstElementarySubstractionState
                                   );
                                 },
                               );
+                              rounds+=1;
+                              UserProvider().sendReport(activity_name, score.toString(), rounds.toString());
                             }
                           },
                           child: Container(

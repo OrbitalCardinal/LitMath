@@ -28,6 +28,7 @@ class SettingsScreen extends StatelessWidget {
               title: Text("Cerrar sesión"),
               leading: Icon(Icons.logout),
               onTap: () {
+                UserProvider().clearSharedPreferences();
                 Navigator.of(context).pushNamed(SlideShowScreen.routeName);
               },
             ),

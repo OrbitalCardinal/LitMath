@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:litmath/providers/user_provider.dart';
 import 'dart:math';
 
 import 'package:litmath/screens/activities_selection_screens/kinder_screen.dart';
@@ -16,6 +17,7 @@ class SubstractionScreen extends StatefulWidget {
 }
 
 class _SubstractionScreenState extends State<SubstractionScreen> {
+  String activity_name = 'Restas';
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
   int totalRounds = 9;
@@ -109,6 +111,8 @@ class _SubstractionScreenState extends State<SubstractionScreen> {
                                   );
                                 },
                               );
+                              rounds+=1;
+                              UserProvider().sendReport(activity_name, score.toString(), rounds.toString());
                             }
                           },
                           child: Container(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/providers/user_provider.dart';
 import 'dart:math';
 
 import 'package:litmath/screens/activities_selection_screens/kinder_screen.dart';
@@ -14,6 +15,7 @@ class SumScreen extends StatefulWidget {
 }
 
 class _SumScreenState extends State<SumScreen> {
+  String activity_name = 'Sumas';
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
   int totalRounds = 9;
@@ -99,8 +101,11 @@ class _SumScreenState extends State<SumScreen> {
                                     score: score,
                                     totalRounds: totalRounds,
                                   );
+                                  
                                 },
                               );
+                              rounds+=1;
+                              UserProvider().sendReport(activity_name, score.toString(), rounds.toString());
                             }
                           },
                           child: Container(
