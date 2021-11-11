@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:litmath/screens/slides_screens/slide_show_screen.dart';
+import 'package:litmath/providers/user_provider.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:litmath/providers/user_provider.dart';
 
 import 'package:litmath/widgets/finished_activity_dialog.dart';
 
@@ -11,6 +12,7 @@ class FirstElementaryCompare extends StatefulWidget {
 }
 
 class _FirstElementaryCompareState extends State<FirstElementaryCompare> {
+  String activity_name = 'Comparación';
   TextStyle promptStyle = const TextStyle(fontSize: 45);
   Random rand = Random();
   int totalRounds = 9;
@@ -84,7 +86,10 @@ class _FirstElementaryCompareState extends State<FirstElementaryCompare> {
                                       totalRounds: totalRounds,
                                     );
                                   },
+                                  
                                 );
+                                rounds+=1;
+                                UserProvider().sendReport(activity_name, score.toString(), rounds.toString());
                               } else {
                                 setState(() {
                                   rounds += 1;

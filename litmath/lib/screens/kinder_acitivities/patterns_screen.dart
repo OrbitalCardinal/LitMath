@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:litmath/providers/user_provider.dart';
 import 'package:litmath/screens/activities_selection_screens/kinder_screen.dart';
 import 'package:litmath/screens/selection_screen.dart';
 import 'package:litmath/widgets/finished_activity_dialog.dart';
@@ -14,6 +15,7 @@ class PatternsScreen extends StatefulWidget {
 }
 
 class _PatternsScreenState extends State<PatternsScreen> {
+  String activity_name = 'Patrones';
   List<String> prompt = [
     "assets/imgs/patrones_screen_assets/patron_1.png",
     "assets/imgs/patrones_screen_assets/patron_2.png",
@@ -99,6 +101,8 @@ class _PatternsScreenState extends State<PatternsScreen> {
                               totalRounds: totalRounds,
                             );
                           });
+                          rounds+=1;
+                          UserProvider().sendReport(activity_name, score.toString(), rounds.toString());
                     } else {
                       setState(() {
                         rounds += 1;

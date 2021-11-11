@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/providers/user_provider.dart';
 import 'dart:math';
 
 import 'package:litmath/screens/activities_selection_screens/kinder_screen.dart';
@@ -14,6 +15,7 @@ class CountingActivtyScreen extends StatefulWidget {
 }
 
 class _CountingActivtyScreenState extends State<CountingActivtyScreen> {
+  String activity_name = 'Conteo';
   int totalRounds = 3;
   int rounds = 0;
   int score = 0;
@@ -88,6 +90,8 @@ class _CountingActivtyScreenState extends State<CountingActivtyScreen> {
                                   totalRounds: totalRounds,
                                 );
                               });
+                              rounds+=1;
+                              UserProvider().sendReport(activity_name, score.toString(), rounds.toString());
                         }
                       },
                       child: Text(answer.toString()),

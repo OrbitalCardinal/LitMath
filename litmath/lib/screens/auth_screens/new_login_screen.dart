@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litmath/models/user.dart';
 import 'package:litmath/providers/user_provider.dart';
 import 'package:litmath/screens/selection_screen.dart';
 
@@ -18,6 +19,8 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
   bool _validatePass = false;
 
   final _key = GlobalKey<FormState>();
+
+  final _user = new User(name: '', email: '', userId: '');
 
   bool validateStructure(String value) {
     String pattern =
