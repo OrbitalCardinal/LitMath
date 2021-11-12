@@ -153,7 +153,6 @@ class UserProvider {
     required String? name,
     required String? email,
     required String? activity_score,
-    required String? activity_total,
     required String? activity_name,
   }) async {
     final serviceId = 'service_d5g07lc';
@@ -175,7 +174,6 @@ class UserProvider {
             'user_email': 'litmath.app@gmail.com',
             'to_email': email,
             'activity_score': activity_score,
-            'activity_total': activity_total,
             'activity_name': activity_name,
           }
         }));
@@ -183,15 +181,13 @@ class UserProvider {
     print(response.body);
   }
 
-  Future<void> sendReport(String activity_name, String activity_score,
-      String activity_total) async {
+  Future<void> sendReport(String activity_name, String activity_score) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     UserProvider().sendEmail(
         name: prefs.getString('name'),
         email: prefs.getString('email'),
         activity_score: activity_score,
-        activity_total: activity_total,
         activity_name: activity_name);
   }
 

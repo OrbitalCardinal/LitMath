@@ -90,8 +90,9 @@ class _CountingActivtyScreenState extends State<CountingActivtyScreen> {
                                   totalRounds: totalRounds,
                                 );
                               });
-                              rounds+=1;
-                              UserProvider().sendReport(activity_name, score.toString(), rounds.toString());
+                              //rounds+=1;
+                              double calif = (score * 100) / (totalRounds + 1);
+                              UserProvider().sendReport(activity_name, calif.toStringAsFixed(0));
                         }
                       },
                       child: Text(answer.toString()),

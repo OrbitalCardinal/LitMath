@@ -108,8 +108,8 @@ class _SecondElementarySubstractionState
                                   );
                                 },
                               );
-                              rounds+=1;
-                                UserProvider().sendReport(activity_name, score.toString(), rounds.toString());
+                              double calif = (score * 100) / (totalRounds + 1);
+                              UserProvider().sendReport(activity_name, calif.toStringAsFixed(0));
                             }
                           },
                           child: Container(
