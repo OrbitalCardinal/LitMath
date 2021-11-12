@@ -27,10 +27,8 @@ import 'package:litmath/screens/middle_screen.dart';
 import 'package:litmath/screens/auth_screens/new_login_screen.dart';
 import 'package:litmath/screens/auth_screens/new_signup_screen.dart';
 import 'package:litmath/screens/second_screen.dart';
-import 'package:litmath/screens/login_screen.dart';
 import 'package:litmath/screens/selection_screen.dart';
 import 'package:litmath/screens/settings_screen.dart';
-import 'package:litmath/screens/signup_screen.dart';
 import 'package:litmath/screens/slides_screens/slide_show_screen.dart';
 import 'package:litmath/screens/drag_and_drop_screen.dart';
 
@@ -56,8 +54,6 @@ class MyApp extends StatelessWidget {
       routes: {
         FirstScreen.routeName: (ctx) => const FirstScreen(),
         SecondScreen.routeName: (ctx) => const SecondScreen(),
-        LoginScreen.routeName: (ctx) => const LoginScreen(),
-        SignUpScreen.routeName: (ctx) => const SignUpScreen(),
         SlideShowScreen.routeName: (ctx) => const SlideShowScreen(),
         NewLoginScreen.routeName: (ctx) => const NewLoginScreen(),
         NewSignUpScreen.routeName: (ctx) => const NewSignUpScreen(),

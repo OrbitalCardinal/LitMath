@@ -38,30 +38,35 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
 
   Future<void> _submit(
       BuildContext context, String email, String password) async {
-    try {
-      UserProvider().signIn(email, password);
-    } catch (error) {
+    bool allow = await UserProvider().signIn(email, password);
+    if (allow) {
+      // if auth correct
       showDialog(
           context: context,
           builder: (_) => AlertDialog(
-                title: const Text('Error de solicitud HTTP'),
-                content: Text(error.toString()),
+                content: const Text('Inició Sesión Correctamente'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: const Text('Okay'),
+                  ),
+                ],
+              )).then((_) {
+        Navigator.of(context).pushReplacementNamed(SelectionScreen.routeName);
+      });
+    } else {
+      showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+                title: const Text('Error al inicar sesión'),
+                content: const Text("Compruebe los datos de inicio de sesión"),
+                actions: [
+                  TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: const Text("Ok"))
+                ],
               ));
-      return;
     }
-    showDialog(
-        context: context,
-        builder: (_) => AlertDialog(
-              content: const Text('Inició Sesión Correctamente'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('Okay'),
-                ),
-              ],
-            )).then((_) {
-      Navigator.of(context).pushReplacementNamed(SelectionScreen.routeName);
-    });
   }
 
   @override
