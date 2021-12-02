@@ -31,6 +31,7 @@ import 'package:litmath/screens/selection_screen.dart';
 import 'package:litmath/screens/settings_screen.dart';
 import 'package:litmath/screens/slides_screens/slide_show_screen.dart';
 import 'package:litmath/screens/drag_and_drop_screen.dart';
+import 'package:sizer/sizer.dart';
 
 void main() {
   runApp(const MyApp());
