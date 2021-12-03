@@ -43,60 +43,66 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData();
-    return MaterialApp(
-      theme: theme.copyWith(
-        colorScheme: theme.colorScheme.copyWith(
-          primary: Colors.red[400],
-          secondary: Colors.blue[600],
+    return Sizer(builder: (context, orientation, deviceType) {
+      return MaterialApp(
+        theme: theme.copyWith(
+          colorScheme: theme.colorScheme.copyWith(
+            primary: Colors.red[400],
+            secondary: Colors.blue[600],
+          ),
         ),
-      ),
-      debugShowCheckedModeBanner: false,
-      home: const SlideShowScreen(),
-      routes: {
-        FirstScreen.routeName: (ctx) => const FirstScreen(),
-        SecondScreen.routeName: (ctx) => const SecondScreen(),
-        SlideShowScreen.routeName: (ctx) => const SlideShowScreen(),
-        NewLoginScreen.routeName: (ctx) => const NewLoginScreen(),
-        NewSignUpScreen.routeName: (ctx) => const NewSignUpScreen(),
-        SelectionScreen.routeName: (ctx) => const SelectionScreen(),
-        KinderScreen.routeName: (ctx) => const KinderScreen(),
-        FirstElementaryScreen.routeName: (ctx) => const FirstElementaryScreen(),
-        SecondElementaryScreen.routeName: (ctx) =>
-            const SecondElementaryScreen(),
-        ThirdElementaryScreen.routeName: (ctx) => const ThirdElementaryScreen(),
-        MiddleScreen.routeName: (ctx) => const MiddleScreen(),
-        SettingsScreen.routeName: (ctx) => const SettingsScreen(),
-        DragAndDropScreen.routeName: (ctx) => const DragAndDropScreen(),
-        CountingActivtyScreen.routeName: (ctx) => const CountingActivtyScreen(),
-        PatternsScreen.routeName: (ctx) => const PatternsScreen(),
-        SumScreen.routeName: (ctx) => const SumScreen(),
-        SubstractionScreen.routeName: (ctx) => const SubstractionScreen(),
-        FirstElementarySums.routeName: (ctx) => const FirstElementarySums(),
-        FirstElementarySubstraction.routeName: (ctx) =>
-            const FirstElementarySubstraction(),
-        FirstElementaryCompare.routeName: (ctx) =>
-            const FirstElementaryCompare(),
-        FirstElementaryFractions.routeName: (ctx) =>
-            const FirstElementaryFractions(),
-        SecondElementarySums.routeName: (ctx) => const SecondElementarySums(),
-        SecondElementarySubstraction.routeName: (ctx) =>
-            const SecondElementarySubstraction(),
-        SecondElementaryMultiplication.routeName: (ctx) =>
-            const SecondElementaryMultiplication(),
-        SecondElementaryDivide.routeName: (ctx) =>
-            const SecondElementaryDivide(),
-        SecondElementaryShapes.routeName: (ctx) =>
-            const SecondElementaryShapes(),
-        ThirdElementarySums.routeName: (ctx) => const ThirdElementarySums(),
-        ThirdElementarySubstraction.routeName: (ctx) =>
-            const ThirdElementarySubstraction(),
-        ThirdElementaryMultiplication.routeName: (ctx) =>
-            const ThirdElementaryMultiplication(),
-        ThirdElementaryDivide.routeName: (ctx) => const ThirdElementaryDivide(),
-        SecondElementaryFractions.routeName: (ctx) =>
-            const SecondElementaryFractions(),
-        ThirdElementaryPlane.routeName: (ctx) => const ThirdElementaryPlane()
-      },
-    );
+        debugShowCheckedModeBanner: false,
+        home: const SlideShowScreen(),
+        routes: {
+          FirstScreen.routeName: (ctx) => const FirstScreen(),
+          SecondScreen.routeName: (ctx) => const SecondScreen(),
+          SlideShowScreen.routeName: (ctx) => const SlideShowScreen(),
+          NewLoginScreen.routeName: (ctx) => const NewLoginScreen(),
+          NewSignUpScreen.routeName: (ctx) => const NewSignUpScreen(),
+          SelectionScreen.routeName: (ctx) => const SelectionScreen(),
+          KinderScreen.routeName: (ctx) => const KinderScreen(),
+          FirstElementaryScreen.routeName: (ctx) =>
+              const FirstElementaryScreen(),
+          SecondElementaryScreen.routeName: (ctx) =>
+              const SecondElementaryScreen(),
+          ThirdElementaryScreen.routeName: (ctx) =>
+              const ThirdElementaryScreen(),
+          MiddleScreen.routeName: (ctx) => const MiddleScreen(),
+          SettingsScreen.routeName: (ctx) => const SettingsScreen(),
+          DragAndDropScreen.routeName: (ctx) => const DragAndDropScreen(),
+          CountingActivtyScreen.routeName: (ctx) =>
+              const CountingActivtyScreen(),
+          PatternsScreen.routeName: (ctx) => const PatternsScreen(),
+          SumScreen.routeName: (ctx) => const SumScreen(),
+          SubstractionScreen.routeName: (ctx) => const SubstractionScreen(),
+          FirstElementarySums.routeName: (ctx) => const FirstElementarySums(),
+          FirstElementarySubstraction.routeName: (ctx) =>
+              const FirstElementarySubstraction(),
+          FirstElementaryCompare.routeName: (ctx) =>
+              const FirstElementaryCompare(),
+          FirstElementaryFractions.routeName: (ctx) =>
+              const FirstElementaryFractions(),
+          SecondElementarySums.routeName: (ctx) => const SecondElementarySums(),
+          SecondElementarySubstraction.routeName: (ctx) =>
+              const SecondElementarySubstraction(),
+          SecondElementaryMultiplication.routeName: (ctx) =>
+              const SecondElementaryMultiplication(),
+          SecondElementaryDivide.routeName: (ctx) =>
+              const SecondElementaryDivide(),
+          SecondElementaryShapes.routeName: (ctx) =>
+              const SecondElementaryShapes(),
+          ThirdElementarySums.routeName: (ctx) => const ThirdElementarySums(),
+          ThirdElementarySubstraction.routeName: (ctx) =>
+              const ThirdElementarySubstraction(),
+          ThirdElementaryMultiplication.routeName: (ctx) =>
+              const ThirdElementaryMultiplication(),
+          ThirdElementaryDivide.routeName: (ctx) =>
+              const ThirdElementaryDivide(),
+          SecondElementaryFractions.routeName: (ctx) =>
+              const SecondElementaryFractions(),
+          ThirdElementaryPlane.routeName: (ctx) => const ThirdElementaryPlane()
+        },
+      );
+    });
   }
 }

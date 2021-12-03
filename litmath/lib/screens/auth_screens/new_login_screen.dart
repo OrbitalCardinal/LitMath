@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:litmath/models/user.dart';
 import 'package:litmath/providers/user_provider.dart';
 import 'package:litmath/screens/selection_screen.dart';
+import 'package:sizer/sizer.dart';
 
 class NewLoginScreen extends StatefulWidget {
   const NewLoginScreen({Key? key}) : super(key: key);
@@ -72,6 +73,8 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
   @override
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
+    final mediaQueryData = MediaQuery.of(context);
+    if (mediaQueryData.orientation == Orientation.portrait) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -89,11 +92,13 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
                 image: AssetImage("assets/imgs/loginBackground.png"),
                 fit: BoxFit.cover,
                 height: double.infinity,
+                width: double.infinity,
                 alignment: Alignment.center,
               ),
               Container(
                 margin:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 200),
+                    EdgeInsets.symmetric(horizontal: 12.w, vertical: 27.h),
+                    //const EdgeInsets.symmetric(horizontal: 50, vertical: 200),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
@@ -102,19 +107,20 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
                 height: double.infinity,
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
+                      EdgeInsets.symmetric(horizontal: 3.w, vertical: 4.h),
+                      //const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
                         children: [
-                          const Text(
+                          Text(
                             "Bienvenido a LitMath",
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 16.sp),
                           ),
                           Text(
                             "Inicia sesión para empezar a aprender",
-                            style: TextStyle(color: Colors.grey[700]),
+                            style: TextStyle(color: Colors.grey[700],fontSize: 12.sp),
                           ),
                         ],
                       ),
@@ -138,7 +144,7 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
                                     label: Text("Correo electronico")),
                               ),
                               // SizedBox(height: 20),
-                              SizedBox(height: 20),
+                              SizedBox(height: 2.5.h),
                               TextFormField(
                                 controller: passwordController,
                                 obscureText: true,
@@ -180,5 +186,121 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
         ),
       ),
     );
+    }
+    {
+      return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        foregroundColor: Colors.white,
+      ),
+      body: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
+        child: SizedBox(
+          height: deviceHeight,
+          child: Stack(
+            children: [
+              const Image(
+                image: AssetImage("assets/imgs/loginBackground.png"),
+                fit: BoxFit.cover,
+                height: double.infinity,
+                width: double.infinity,
+                alignment: Alignment.center,
+              ),
+              Container(
+                margin:
+                    EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
+                    //const EdgeInsets.symmetric(horizontal: 50, vertical: 200),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                ),
+                width: double.infinity,
+                height: double.infinity,
+                child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
+                      //const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            "Bienvenido a LitMath",
+                            style: TextStyle(fontSize: 16.sp),
+                          ),
+                          Text(
+                            "Inicia sesión para empezar a aprender",
+                            style: TextStyle(color: Colors.grey[700],fontSize: 12.sp),
+                          ),
+                        ],
+                      ),
+                      Form(
+                          key: _key,
+                          child: Column(
+                            children: [
+                              TextFormField(
+                                controller: emailController,
+                                keyboardType: TextInputType.emailAddress,
+                                validator: (value) {
+                                  if (value == null ||
+                                      !validateEmail(value) ||
+                                      value.toString().isEmpty) {
+                                    return 'Ingrese un email valido';
+                                  }
+                                  return null;
+                                },
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 3.w),
+                                    border: OutlineInputBorder(),
+                                    label: Text("Correo electronico")),
+                              ),
+                              // SizedBox(height: 20),
+                              SizedBox(height: 2.5.h),
+                              TextFormField(
+                                controller: passwordController,
+                                obscureText: true,
+                                validator: (value) {
+                                  if (value == null ||
+                                      validateStructure(value) ||
+                                      value.toString().isEmpty) {
+                                    return 'Ingrese una contraseña valida';
+                                  }
+                                  return null;
+                                },
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 3.w),
+                                  border: OutlineInputBorder(),
+                                  label: Text("Contraseña"),
+                                ),
+                              ),
+                            ],
+                          )),
+                      TextButton(
+                        onPressed: () {
+                          if (_key.currentState!.validate()) {
+                            _submit(context, emailController.text,
+                                passwordController.text);
+                          }
+                        },
+                        style: TextButton.styleFrom(
+                            backgroundColor: Colors.red[400]),
+                        child: const Text(
+                          "Iniciar sesión",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+    }
   }
 }
