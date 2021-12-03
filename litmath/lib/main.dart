@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        home: const SlideShowScreen(),
+        home: const SelectionScreen(),
         routes: {
           FirstScreen.routeName: (ctx) => const FirstScreen(),
           SecondScreen.routeName: (ctx) => const SecondScreen(),

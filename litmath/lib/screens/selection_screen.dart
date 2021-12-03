@@ -11,11 +11,11 @@ import 'package:litmath/screens/settings_screen.dart';
 import 'package:litmath/widgets/scholarship_card.dart';
 import 'package:litmath/providers/user_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sizer/sizer.dart';
 
 class SelectionScreen extends StatelessWidget {
   const SelectionScreen({Key? key}) : super(key: key);
   static const routeName = "/selectionScreen";
-  
 
   // Future<void> _submit(
   //     BuildContext context, String email, String password) async {
@@ -44,19 +44,18 @@ class SelectionScreen extends StatelessWidget {
   //     Navigator.of(context).pushReplacementNamed(SelectionScreen.routeName);
   //   });
   // }
-  Future <void> _getUserLocalId()async {
+  Future<void> _getUserLocalId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userPref = prefs.getString('user');
-     
-    Map<String,dynamic> userMap = jsonDecode(userPref!) as Map<String, dynamic>;
+
+    Map<String, dynamic> userMap =
+        jsonDecode(userPref!) as Map<String, dynamic>;
     print(userMap.values.toList());
   }
 
-  Future <void> _getUserInfo()async {
+  Future<void> _getUserInfo() async {
     UserProvider().getUserInfoD();
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -66,72 +65,78 @@ class SelectionScreen extends StatelessWidget {
     _getUserInfo();
 //UserProvider().sendReport('Patrones','9','10');
     // UserProvider()._sendReport('Patrones','5','10');
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Escolaridad"),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(
-                child: const Text(
-                  "Menu de opciones",
-                  style: TextStyle(color: Colors.white),
-                ),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
-                )),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text("Configuración"),
-              onTap: () {
-                Navigator.of(context).pushNamed(SettingsScreen.routeName);
-              },
-            )
-          ],
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text("Escolaridad"),
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ScholarshipCard(
-              imageUrl: "assets/imgs/preescolar.png",
-              title: "Preescolar",
-              color: Colors.cyan.shade400,
-              routeName: KinderScreen.routeName,
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            ScholarshipCard(
-              imageUrl: "assets/imgs/primaria.png",
-              title: "1° de Primaria",
-              color: Colors.purple,
-              routeName: FirstElementaryScreen.routeName,
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            ScholarshipCard(
-              imageUrl: "assets/imgs/primaria2.png",
-              title: "2° de Primaria",
-              color: Colors.green,
-              routeName: SecondElementaryScreen.routeName,
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            ScholarshipCard(
-              imageUrl: "assets/imgs/secundaria.png",
-              title: "3° de Primaria",
-              color: Colors.red,
-              routeName: ThirdElementaryScreen.routeName,
-            ),
-          ],
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              DrawerHeader(
+                  child: const Text(
+                    "Menu de opciones",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary,
+                  )),
+              ListTile(
+                leading: const Icon(Icons.settings),
+                title: const Text("Configuración"),
+                onTap: () {
+                  Navigator.of(context).pushNamed(SettingsScreen.routeName);
+                },
+              )
+            ],
+          ),
         ),
-      ),
-    );
+        body: Padding(
+          padding: EdgeInsets.all(6.w),
+          child: Center(child: Scrollbar(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+          child: Column(
+            
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ScholarshipCard(
+                imageUrl: "assets/imgs/preescolar.png",
+                title: "Preescolar",
+                color: Colors.cyan.shade400,
+                routeName: KinderScreen.routeName,
+              ),
+              SizedBox(
+                height: 6.5.h,
+              ),
+              ScholarshipCard(
+                imageUrl: "assets/imgs/primaria.png",
+                title: "1° de Primaria",
+                color: Colors.purple,
+                routeName: FirstElementaryScreen.routeName,
+              ),
+              SizedBox(
+                height: 6.5.h,
+              ),
+              ScholarshipCard(
+                imageUrl: "assets/imgs/primaria2.png",
+                title: "2° de Primaria",
+                color: Colors.green,
+                routeName: SecondElementaryScreen.routeName,
+              ),
+              SizedBox(
+                height: 6.5.h,
+              ),
+              ScholarshipCard(
+                imageUrl: "assets/imgs/secundaria.png",
+                title: "3° de Primaria",
+                color: Colors.red,
+                routeName: ThirdElementaryScreen.routeName,
+              ),
+            ],
+          ),
+        ),),),)
+      );
+    }
+    
   }
-}
+
