@@ -99,12 +99,11 @@ class _ThirdElementarySubstractionState
                                 builder: (context) {
                                   return FinishedActivityDialog(
                                     score: score,
-                                    totalRounds: totalRounds,
+                                    totalRounds: totalRounds, activityName: activity_name,
                                   );
                                 },
                               );
-                              double calif = (score * 100) / (totalRounds + 1);
-                              UserProvider().sendReport(activity_name, calif.toStringAsFixed(0));
+                             
                             }
                           },
                           child: Container(

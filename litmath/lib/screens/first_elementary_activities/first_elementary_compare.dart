@@ -83,14 +83,13 @@ class _FirstElementaryCompareState extends State<FirstElementaryCompare> {
                                   builder: (context) {
                                     return FinishedActivityDialog(
                                       score: score,
-                                      totalRounds: totalRounds,
+                                      totalRounds: totalRounds, activityName: activity_name,
                                     );
                                   },
                                   
                                 );
                                 rounds+=1;
-                                double calif = (score * 100) / (totalRounds + 1);
-                                UserProvider().sendReport(activity_name, calif.toStringAsFixed(0));
+                                
                                 //UserProvider().sendReport(activity_name, score.toString(), rounds.toString());
                                 //UserProvider().sendReport(activity_name, activity_score)
                               } else {

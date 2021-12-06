@@ -5,7 +5,7 @@ import 'dart:math';
 import 'package:litmath/screens/activities_selection_screens/kinder_screen.dart';
 import 'package:litmath/screens/selection_screen.dart';
 import 'package:litmath/widgets/finished_activity_dialog.dart';
-
+//import 'package:litmath/widgets/new_finished_dialog.dart';
 class CountingActivtyScreen extends StatefulWidget {
   const CountingActivtyScreen({Key? key}) : super(key: key);
   static const routeName = "/conteoActividad";
@@ -87,12 +87,12 @@ class _CountingActivtyScreenState extends State<CountingActivtyScreen> {
                               builder: (context) {
                                 return FinishedActivityDialog(
                                   score: score,
-                                  totalRounds: totalRounds,
+                                  totalRounds: totalRounds, activityName: activity_name,
                                 );
                               });
                               //rounds+=1;
-                              double calif = (score * 100) / (totalRounds + 1);
-                              UserProvider().sendReport(activity_name, calif.toStringAsFixed(0));
+                              //double calif = (score * 100) / (totalRounds + 1);
+                              //UserProvider().sendReport(activity_name, calif.toStringAsFixed(0));
                         }
                       },
                       child: Text(answer.toString()),
