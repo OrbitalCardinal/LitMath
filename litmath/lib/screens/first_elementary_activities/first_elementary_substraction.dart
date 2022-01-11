@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:litmath/providers/user_provider.dart';
 import 'dart:math';
 
@@ -17,6 +18,7 @@ class _FirstElementarySubstractionState
     extends State<FirstElementarySubstraction> {
   String activity_name = 'Restas 1° Primaria';
   TextStyle promptStyle = const TextStyle(fontSize: 45);
+  var _controller = TextEditingController();
   Random rand = Random();
   int totalRounds = 9;
   int rounds = 0;
@@ -79,51 +81,94 @@ class _FirstElementarySubstractionState
                 Text(
                   "?",
                   style: promptStyle,
-                )
+                ),
               ],
             ),
-            Wrap(
-              children: [
-                ...options
-                    .map(
-                      (option) => Container(
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 10),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            if (option == result) {
-                              score += 1;
-                              print(score);
-                            }
-                            if (rounds != totalRounds) {
-                              setState(() {
-                                rounds += 1;
-                              });
-                            } else {
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return FinishedActivityDialog(
-                                    score: score,
-                                    totalRounds: totalRounds, activityName: activity_name,
-                                  );
-                                },
-                              );
+            TextField(
+              controller: _controller,
+              
+              autofocus: true,
+              style: promptStyle,
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              onSubmitted: (value) {
+                print(value);
+
+                if (int.parse(value) == result) {
+                  score += 1;
+                  
+                }
+
+                  if (rounds != totalRounds) {
+                            setState(() {
+                              rounds += 1;
+                              _controller.clear();
                               
-                            }
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(20),
-                            child: Text(
-                              option.toString(),
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-                    .toList()
-              ],
+                            });
+                  
+                          } else {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return FinishedActivityDialog(
+                                  score: score,
+                                  totalRounds: totalRounds, activityName: activity_name,
+                                );
+                              },
+                            );
+                            
+                          }
+              
+                
+              },onEditingComplete: () {},
             )
+
+            // Wrap(
+            //   children: [
+            //     ...options
+            //         .map(
+            //           (option) => Container(
+            //             margin: const EdgeInsets.symmetric(
+            //                 horizontal: 10, vertical: 10),
+            //             child:
+            //             TextField(keyboardType: TextInputType.number,inputFormatters: [FilteringTextInputFormatter.digitsOnly],)
+            //             // ElevatedButton(
+            //             //   onPressed: () {
+            //             //     if (option == result) {
+            //             //       score += 1;
+            //             //       print(score);
+            //             //     }
+            //             //     if (rounds != totalRounds) {
+            //             //       setState(() {
+            //             //         rounds += 1;
+            //             //       });
+            //             //     } else {
+            //             //       showDialog(
+            //             //         context: context,
+            //             //         builder: (context) {
+            //             //           return FinishedActivityDialog(
+            //             //             score: score,
+            //             //             totalRounds: totalRounds, activityName: activity_name,
+            //             //           );
+            //             //         },
+            //             //       );
+
+            //             //     }
+            //             //   },
+            //             //   child: Container(
+            //             //     padding: const EdgeInsets.all(20),
+            //             //     child: Text(
+            //             //       option.toString(),
+
+            //             //     ),
+            //             //   ),
+            //             // ),
+            //           ),
+            //         )
+            //         .toList()
+
+            //   ],
+            // )
           ],
         ),
       ),

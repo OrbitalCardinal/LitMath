@@ -21,7 +21,7 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
 
   final _key = GlobalKey<FormState>();
 
-  final _user = new User(name: '', email: '', userId: '');
+  //final _user = new User(name: '', email: '', userId: '');
 
   bool validateStructure(String value) {
     String pattern =
